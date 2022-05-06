@@ -28,8 +28,8 @@ addonVersion        = xbmcaddon.Addon().getAddonInfo("version")
 addonId             = xbmcaddon.Addon().getAddonInfo("id")
 addonPath           = xbmcaddon.Addon().getAddonInfo("path")
 
-version="(v0.1.0)"
-comparaVersion = "0.1.0"
+version="(v0.1.2)"
+comparaVersion = "0.1.2"
 
 addonPath           = xbmcaddon.Addon().getAddonInfo("path")
 mi_data = xbmc.translatePath(os.path.join('special://home/userdata/addon_data/plugin.video.FutbolTream/'))
@@ -59,7 +59,7 @@ Lista1_AcotaFin = plugintools.find_single_match(datosConf,'Lista1_AcotaFin>(.*?)
 
 Lista2_Titulo = plugintools.find_single_match(datosConf,'Lista2_Titulo>(.*?)<Fin')
 Lista2_AcotaInicio = plugintools.find_single_match(datosConf,'Lista2_AcotaInicio>(.*?)<Fin')
-Lista2_AcotaFin = plugintools.find_single_match(datosConf,'Lista3_AcotaFin>(.*?)<Fin')
+Lista2_AcotaFin = plugintools.find_single_match(datosConf,'Lista2_AcotaFin>(.*?)<Fin')
 
 Lista3_Titulo = plugintools.find_single_match(datosConf,'Lista3_Titulo>(.*?)<Fin')
 Lista3_AcotaInicio = plugintools.find_single_match(datosConf,'Lista3_AcotaInicio>(.*?)<Fin')
@@ -121,18 +121,25 @@ def main_list(params):
     else:
         plugintools.add_item(action="",url="",title="[COLOR red]····Guia de Eventos temporalmente Inactiva en la Web····[/COLOR]",thumbnail=logoprin,fanart=fondo,folder=False,isPlayable=False)
     
-    if ("Canales HD" in dataWeb) and ("Lucas_m_" in dataWeb) and ("@MANUK0S" in dataWeb):  ##Si están tituladas las 3 Listas del Centro de la página
+    #if ("Canales HD" in dataWeb) and ("Lucas_m_" in dataWeb) and ("@MANUK0S" in dataWeb):  ##Si están tituladas las 3 Listas del Centro de la página
+    if ("Lucas_m_" in dataWeb):
         plugintools.add_item(action="bylucas",url=web,title='[COLOR white]'+Lista1_Titulo+'[/COLOR]', thumbnail=logoprin, fanart=fondo, folder=True, isPlayable=False)
+    if ("@MANUK0S" in dataWeb):
         plugintools.add_item(action="manukos",url=web,title='[COLOR white]'+Lista2_Titulo+'[/COLOR]', thumbnail=logoprin, fanart=fondo, folder=True, isPlayable=False)
+    if ("Canales HD" in dataWeb):
         plugintools.add_item(action="canalesHD",url=web,title='[COLOR white]'+Lista3_Titulo+'[/COLOR]', thumbnail=logoprin, fanart=fondo, folder=True, isPlayable=False)
-    else:  ##Intentamos coger todos los links en una única lista
-        plugintools.add_item(action="listaCentral",url=web,title='[COLOR white]Recopilación Temporal de Listas [COLOR lime]>>entrar<< [COLOR coral](Faltan datos de creadores en la Web)[/COLOR]', thumbnail=logoprin, fanart=fondo, folder=True, isPlayable=False)
     
-    if "Canales 365" in dataWeb:
-        plugintools.add_item(action="canales365",url="",title='[COLOR white]Canales 365[/COLOR]', thumbnail=logoprin, fanart=fondo, folder=True, isPlayable=False)
+    if not ("Lucas_m_" in dataWeb) and not ("@MANUK0S" in dataWeb):  ##Intentamos coger todos los links en una única lista
+        plugintools.add_item(action="listaCentral",url=web,title='[COLOR white]Recopilación Temporal de Listas [COLOR lime]>>entrar<< [COLOR coral](Faltan datos de creadores en la Web)[/COLOR]', thumbnail=logoprin, fanart=fondo, folder=True, isPlayable=False)
+    else:
+        if "Canales 365" in dataWeb:
+            plugintools.add_item(action="canales365",url="",title='[COLOR white]Canales 365[/COLOR]', thumbnail=logoprin, fanart=fondo, folder=True, isPlayable=False)
 
-    if "NBA Tv" in dataWeb:
-        plugintools.add_item(action="nbaTV",url=web,title='[COLOR white]'+Lista4_Titulo+'[/COLOR]', thumbnail=logoprin, fanart=fondo, folder=True, isPlayable=False)
+        if "NBA Tv" in dataWeb:
+            plugintools.add_item(action="nbaTV",url=web,title='[COLOR white]'+Lista4_Titulo+'[/COLOR]', thumbnail=logoprin, fanart=fondo, folder=True, isPlayable=False)
+    
+    if "<Varios>" in datosConf:
+        plugintools.add_item(action="variosTemp",url=web,title='[COLOR white]Canales Temporales[/COLOR]', thumbnail=logoprin, fanart=fondo, folder=True, isPlayable=False)
     
     
     acotacion = "a visionar<"
@@ -173,6 +180,7 @@ def guiaEventos(params):
             competicion = plugintools.find_single_match(evento[3],'>(.*?)<').replace("td&gt;" , "").replace("\n" , "")
             partido = plugintools.find_single_match(evento[4],'>(.*?)<').replace("td&gt;" , "").replace("\n" , "")
             evento[5] = evento[5].replace("<br>" , " y ")
+            evento[5] = evento[5].replace("<br/>" , " y ")
             canales = plugintools.find_single_match(evento[5],'>(.*?)<').replace("td&gt;" , "").replace("\n" , "")
             
             titu = ""
@@ -232,6 +240,41 @@ def guiaEventos(params):
             '''
 
 
+def variosTemp(params):
+
+    acotacion = "<Varios"
+    acotaFin = "Fin>"
+    canales = plugintools.find_multiple_matches(datosConf,acotacion+'(.*?)'+acotaFin)  
+    for item in canales:
+        titulo = plugintools.find_single_match(item,'>(.*?)<')
+        link = plugintools.find_single_match(item,'link>(.*?)<')
+        titu = "[COLOR white]" + titulo + "[/COLOR]"
+        #plugintools.log("*****************Titu: "+titulo+"********************")
+        #plugintools.log("*****************Link: "+link+"********************")
+        NoM3U = True
+        if len(titulo) > 0:
+            if "acestream" in link:
+                link = link.replace("acestream://" , "")
+                horus = horusAce
+                reemplaza = base64.b64decode(horus.encode('utf-8')).decode('utf-8').replace("MI-ID-ACE" , link)
+            else:
+                mivideo = link
+                NoM3U = False
+                
+            if usaHorus and NoM3U:
+                reemplaza = reemplaza.replace("MI-FANART" , "")
+                reemplaza = reemplaza.replace("MI-ICONO" , logoprin)
+                reemplaza = reemplaza.replace("MI-TITULO" , titulo)
+                
+                mivideo = "plugin://script.module.horus/?" + base64.b64encode(reemplaza.encode('utf-8')).decode('utf-8')
+            else:
+                if NoM3U:
+                    if "://" in link:  ##Es una url o de un link acortado o de una url torrent
+                        mivideo = "http://127.0.0.1:6878/ace/getstream?url=" + link
+                    else:  ## Es un ID clásico de Acestream
+                        mivideo = "http://127.0.0.1:6878/ace/getstream?id=" + link
+            
+            plugintools.add_item(action="lanza", url=mivideo, title=titu, genre="", thumbnail=logoprin, fanart=fondo, folder=False, isPlayable=False)
 
 
 
@@ -315,7 +358,7 @@ def canalesHD(params):  ##Lista 3
         link = plugintools.find_single_match(item,'href="(.*?)"')
         titulo = plugintools.find_single_match(item,'follow">(.*?)<')
         titu = "[COLOR white]" + titulo + "[/COLOR]"
-        #plugintools.log("*****************Titu: "+titulo+"********************")
+        #plugintools.log("*****************Titu:2 "+titulo+"********************")
         #plugintools.log("*****************Link: "+link+"********************")
         if len(titulo) > 0:
             if "acestream" in link:
@@ -323,8 +366,8 @@ def canalesHD(params):  ##Lista 3
                 horus = horusAce
                 reemplaza = base64.b64decode(horus.encode('utf-8')).decode('utf-8').replace("MI-ID-ACE" , link)
             else:
-                horus = horusTorrent
-                reemplaza = base64.b64decode(horus.encode('utf-8')).decode('utf-8').replace("MI-TORRENT" , link)
+                mivideo = link
+                NoM3U = False
                 
             if usaHorus:
                 reemplaza = reemplaza.replace("MI-FANART" , "")
@@ -333,7 +376,7 @@ def canalesHD(params):  ##Lista 3
                 
                 mivideo = "plugin://script.module.horus/?" + base64.b64encode(reemplaza.encode('utf-8')).decode('utf-8')
             else:
-                if "://" in link:  ##Es una url o de un link acortado o de una url torrent
+                if "://" in link  and NoM3U:  ##Es una url o de un link acortado o de una url torrent
                     mivideo = "http://127.0.0.1:6878/ace/getstream?url=" + link
                 else:  ## Es un ID clásico de Acestream
                     mivideo = "http://127.0.0.1:6878/ace/getstream?id=" + link
@@ -347,6 +390,7 @@ def manukos(params):  ##Lista 2
     acotacion = Lista2_AcotaInicio
     acotaFin = Lista2_AcotaFin
     grupo = plugintools.find_single_match(dataWeb,acotacion+'(.*?)'+acotaFin)  
+    #plugintools.log("*****************Grupo "+grupo+"********************")
     canales = plugintools.find_multiple_matches(grupo,'<a(.*?)/a>')
     for item in canales:
         link = plugintools.find_single_match(item,'href="(.*?)"')
@@ -387,7 +431,33 @@ def nbaTV(params):  ##Lista 4
         link = plugintools.find_single_match(item,'href="(.*?)"')
         titulo = plugintools.find_single_match(item,'follow">(.*?)<')
         titu = "[COLOR white]" + titulo + "[/COLOR]"
+        
+        NoM3U = True
         if len(titulo) > 0:
+            if "acestream" in link:
+                link = link.replace("acestream://" , "")
+                horus = horusAce
+                reemplaza = base64.b64decode(horus.encode('utf-8')).decode('utf-8').replace("MI-ID-ACE" , link)
+            else:
+                mivideo = link
+                NoM3U = False
+                
+            if usaHorus and NoM3U:
+                reemplaza = reemplaza.replace("MI-FANART" , "")
+                reemplaza = reemplaza.replace("MI-ICONO" , logoprin)
+                reemplaza = reemplaza.replace("MI-TITULO" , titulo)
+                
+                mivideo = "plugin://script.module.horus/?" + base64.b64encode(reemplaza.encode('utf-8')).decode('utf-8')
+            else:
+                if NoM3U:
+                    if "://" in link:  ##Es una url o de un link acortado o de una url torrent
+                        mivideo = "http://127.0.0.1:6878/ace/getstream?url=" + link
+                    else:  ## Es un ID clásico de Acestream
+                        mivideo = "http://127.0.0.1:6878/ace/getstream?id=" + link
+            
+            plugintools.add_item(action="lanza", url=mivideo, title=titu, genre="", thumbnail=logoprin, fanart=fondo, folder=False, isPlayable=False)
+        
+        
             '''
             if "acestream" in link:
                 link = link.replace("acestream://" , "")
@@ -409,10 +479,11 @@ def nbaTV(params):  ##Lista 4
                     mivideo = "http://127.0.0.1:6878/ace/getstream?url=" + link
                 else:  ## Es un ID clásico de Acestream
                     mivideo = "http://127.0.0.1:6878/ace/getstream?id=" + link
-            '''
+            
             mivideo = link
             
             plugintools.add_item(action="lanza", url=mivideo, title=titu, genre="", thumbnail=logoprin, fanart=fondo, folder=False, isPlayable=False)
+            '''
 
 
 
