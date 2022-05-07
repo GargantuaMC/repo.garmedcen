@@ -23,9 +23,9 @@ from urlresolver.resolver import UrlResolver, ResolverError
 
 
 class StreamzResolver(UrlResolver):
-    name = "streamz"
-    domains = ['streamz.cc', "streamz.vg", "streamzz.to"]
-    pattern = r'(?://|\.)(streamzz?\.(?:cc|vg|to))/([0-9a-zA-Z]+)'
+    name = 'streamz'
+    domains = ['streamz.cc', 'streamz.vg', 'streamzz.to', 'streamz.ws']
+    pattern = r'(?://|\.)(streamzz?\.(?:cc|vg|to|ws))/([0-9a-zA-Z]+)'
 
     def get_media_url(self, host, media_id):
 
@@ -33,17 +33,15 @@ class StreamzResolver(UrlResolver):
         headers = {'User-Agent': common.CHROME_USER_AGENT}
         html = self.net.http_GET(web_url, headers=headers).content
 
-        html += helpers.get_packed_data(html)
-        sources = helpers.scrape_sources(html)
+        if '<b>File not found, sorry!</b>' not in html:
+            html += helpers.get_packed_data(html)
+            v = re.search(r"player\s*=\s*.*?'([^']+)", html)
+            if v:
+                vurl = re.search(r'''{0}".+?src:\s*'([^']+)'''.format(v.group(1)), html)
+                if vurl:
+                    return helpers.get_redirect_url(vurl.group(1), headers) + helpers.append_headers(headers)
 
-        if sources:
-            headers.update({'Referer': web_url})
-            vurl = helpers.pick_source(sources)
-            vurl = re.sub('get[a-zA-Z]{4}-', 'getlink-', vurl)
-            return helpers.get_redirect_url(vurl, headers) + helpers.append_headers(headers)
-
-        raise ResolverError("Video not found")
+        raise ResolverError('Video not found or removed')
 
     def get_url(self, host, media_id):
-
-        return self._default_get_url(host, media_id, template='https://streamz.vg/{media_id}')
+        return self._default_get_url(host, media_id, template='https://streamzz.to/{media_id}')

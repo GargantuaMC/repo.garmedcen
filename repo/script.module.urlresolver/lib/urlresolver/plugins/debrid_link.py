@@ -38,7 +38,6 @@ class DebridLinkResolver(UrlResolver):
     domains = ["*"]
 
     def __init__(self):
-        self.net = common.Net()
         self.hosters = None
         self.hosts = None
         self.headers = {'User-Agent': USER_AGENT, 'Authorization': 'Bearer {0}'.format(self.get_setting('token'))}
@@ -114,8 +113,9 @@ class DebridLinkResolver(UrlResolver):
             url = '{0}/seedbox/cached?url={1}'.format(api_url, media_id)
             result = json.loads(self.net.http_GET(url, headers=self.headers).content)
             if result.get('success', False):
-                if media_id in list(result.get('value').keys()):
-                    return True
+                if isinstance(result.get('value'), dict):
+                    if media_id in list(result.get('value').keys()):
+                        return True
         except urllib_error.HTTPError as e:
             if not retry and e.code == 401:
                 if self.get_setting('refresh'):
@@ -370,6 +370,7 @@ class DebridLinkResolver(UrlResolver):
                 logger.log_debug('Authorizing Debrid-Link Result: |{0}|'.format(js_data))
                 activated = True
                 self.set_setting('token', js_data.get('access_token'))
+                self.set_setting('client_id', CLIENT_ID)
                 self.set_setting('refresh', js_data.get('refresh_token'))
         except urllib_error.HTTPError as e:
             if e.code == 400:
@@ -397,6 +398,7 @@ class DebridLinkResolver(UrlResolver):
         xml.append('<setting id="{0}_reset" type="action" label="{1}" action="RunPlugin(plugin://script.module.urlresolver/?mode=reset_dl)"/>'.format(cls.__name__, i18n('reset_my_auth')))
         xml.append('<setting id="{0}_token" visible="false" type="text" default=""/>'.format(cls.__name__))
         xml.append('<setting id="{0}_refresh" visible="false" type="text" default=""/>'.format(cls.__name__))
+        xml.append('<setting id="{0}_client_id" visible="false" type="text" default=""/>'.format(cls.__name__))
         return xml
 
     @classmethod

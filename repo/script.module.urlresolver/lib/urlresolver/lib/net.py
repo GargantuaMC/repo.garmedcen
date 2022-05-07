@@ -19,8 +19,9 @@ import random
 from six.moves import http_cookiejar
 import gzip
 import re
+import json
 import six
-from six.moves import urllib_request, urllib_parse
+from six.moves import urllib_request, urllib_parse, urllib_error
 import socket
 import time
 from urlresolver.lib import kodi
@@ -159,7 +160,7 @@ class Net:
         """Returns user agent string."""
         return self._user_agent
 
-    def _update_opener(self):
+    def _update_opener(self, drop_tls_level=False):
         """
         Builds and installs a new opener to be used by all future calls to
         :func:`urllib2.urlopen`.
@@ -192,6 +193,19 @@ class Net:
                     handlers += [urllib_request.HTTPSHandler(context=ctx)]
             except:
                 pass
+        else:
+            try:
+                import ssl
+                import certifi
+                ctx = ssl.create_default_context(cafile=certifi.where())
+                if drop_tls_level:
+                    ctx.protocol = ssl.PROTOCOL_TLSv1_1
+                if self._http_debug:
+                    handlers += [urllib_request.HTTPSHandler(context=ctx, debuglevel=1)]
+                else:
+                    handlers += [urllib_request.HTTPSHandler(context=ctx)]
+            except:
+                pass
 
         opener = urllib_request.build_opener(*handlers)
         urllib_request.install_opener(opener)
@@ -216,7 +230,7 @@ class Net:
         """
         return self._fetch(url, headers=headers, compression=compression)
 
-    def http_POST(self, url, form_data, headers={}, compression=True):
+    def http_POST(self, url, form_data, headers={}, compression=True, jdata=False):
         """
         Perform an HTTP POST request.
 
@@ -236,7 +250,7 @@ class Net:
             An :class:`HttpResponse` object containing headers and other
             meta-information about the page and the page content.
         """
-        return self._fetch(url, form_data, headers=headers, compression=compression)
+        return self._fetch(url, form_data, headers=headers, compression=compression, jdata=jdata)
 
     def http_HEAD(self, url, headers={}):
         """
@@ -284,7 +298,7 @@ class Net:
         response = urllib_request.urlopen(request)
         return HttpResponse(response)
 
-    def _fetch(self, url, form_data={}, headers={}, compression=True):
+    def _fetch(self, url, form_data={}, headers={}, compression=True, jdata=False):
         """
         Perform an HTTP GET or POST request.
 
@@ -307,7 +321,9 @@ class Net:
         """
         req = urllib_request.Request(url)
         if form_data:
-            if isinstance(form_data, six.string_types):
+            if jdata:
+                form_data = json.dumps(form_data)
+            elif isinstance(form_data, six.string_types):
                 form_data = form_data
             else:
                 form_data = urllib_parse.urlencode(form_data, True)
@@ -318,9 +334,17 @@ class Net:
             req.add_header(key, headers[key])
         if compression:
             req.add_header('Accept-Encoding', 'gzip')
+        if jdata:
+            req.add_header('Content-Type', 'application/json')
         host = req.host if six.PY3 else req.get_host()
         req.add_unredirected_header('Host', host)
-        response = urllib_request.urlopen(req, timeout=15)
+        try:
+            response = urllib_request.urlopen(req, timeout=15)
+        except urllib_error.HTTPError as e:
+            if e.code == 403:
+                self._update_opener(drop_tls_level=True)
+            response = urllib_request.urlopen(req, timeout=15)
+
         return HttpResponse(response)
 
 
@@ -390,7 +414,6 @@ class HttpResponse:
                     hdrs.update({item[0].title(): item[1]})
                 else:
                     hdrs.update({item[0].title(): ','.join([hdrs[item[0].title()], item[1]])})
-            # return dict([(item[0].title(), item[1]) for item in list(self._response.info().items())])
             return hdrs
         else:
             return self._response.info()._headers if six.PY3 else [(x.split(':')[0].strip(), x.split(':')[1].strip()) for x in self._response.info().headers]
