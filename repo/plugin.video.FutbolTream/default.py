@@ -28,8 +28,8 @@ addonVersion        = xbmcaddon.Addon().getAddonInfo("version")
 addonId             = xbmcaddon.Addon().getAddonInfo("id")
 addonPath           = xbmcaddon.Addon().getAddonInfo("path")
 
-version="(v0.1.2)"
-comparaVersion = "0.1.2"
+version="(v0.1.3)"
+comparaVersion = "0.1.3"
 
 addonPath           = xbmcaddon.Addon().getAddonInfo("path")
 mi_data = xbmc.translatePath(os.path.join('special://home/userdata/addon_data/plugin.video.FutbolTream/'))
@@ -80,6 +80,9 @@ if versionActual > comparaVersion:
 
 
 dataWeb = httptools.downloadpage(web, headers=headers).data + "<END>"
+quita = '<font class="wsw-13">'
+dataWeb = dataWeb.replace(quita , "").replace("&nbsp;" , " ")
+            
 
 guia_eventos = plugintools.find_multiple_matches(dataWeb,'<tr>(.*?)</tr>')
 
@@ -179,8 +182,8 @@ def guiaEventos(params):
             deporte = plugintools.find_single_match(evento[2],'>(.*?)<').replace("td&gt;" , "").replace("\n" , "")
             competicion = plugintools.find_single_match(evento[3],'>(.*?)<').replace("td&gt;" , "").replace("\n" , "")
             partido = plugintools.find_single_match(evento[4],'>(.*?)<').replace("td&gt;" , "").replace("\n" , "")
-            evento[5] = evento[5].replace("<br>" , " y ")
-            evento[5] = evento[5].replace("<br/>" , " y ")
+            evento[5] = evento[5].replace("<br>" , " y ").replace("<BR>" , " y ").replace("</br>" , " y ")
+            evento[5] = evento[5].replace("<br/>" , " y ").replace("<BR/>" , " y ").replace("</BR>" , " y ")
             canales = plugintools.find_single_match(evento[5],'>(.*?)<').replace("td&gt;" , "").replace("\n" , "")
             
             titu = ""
@@ -249,8 +252,6 @@ def variosTemp(params):
         titulo = plugintools.find_single_match(item,'>(.*?)<')
         link = plugintools.find_single_match(item,'link>(.*?)<')
         titu = "[COLOR white]" + titulo + "[/COLOR]"
-        #plugintools.log("*****************Titu: "+titulo+"********************")
-        #plugintools.log("*****************Link: "+link+"********************")
         NoM3U = True
         if len(titulo) > 0:
             if "acestream" in link:
