@@ -31,7 +31,7 @@
         <fanart>fanart.jpg</fanart>
     </assets>
   </extension>
-</addon><addon id="plugin.video.tvmfibraz" version="0.1.2" name="[COLOR violet]VC-MTV[/COLOR]" provider-name="GMC-Team">
+</addon><addon id="plugin.video.tvmfibraz" version="1.2.3" name="[COLOR violet]VC-MTV-FMT[/COLOR]" provider-name="GMC-Team">
 <requires>
   <import addon="xbmc.python" version="2.25.0" />
 </requires>
