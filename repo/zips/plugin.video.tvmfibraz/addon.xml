@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon id="plugin.video.tvmfibraz"
-version="0.1.0"
-name="[COLOR fuchsia]MorateallaTV[/COLOR]"
+version="0.1.2"
+name="[COLOR violet]VC-MTV[/COLOR]"
 provider-name="GMC-Team">
 <requires>
   <import addon="xbmc.python" version="2.25.0"/>
