@@ -19,10 +19,10 @@ _handle = int(sys.argv[1])
 # Here we use a fixed set of properties simply for demonstrating purposes
 # In a "real life" plugin you will need to get info and links to video files/streams
 # from some web-site or online service.
-VIDEOS = {'MTV-fibra': [{'name': 'Directo',
+VIDEOS = {'Moratalla TV - FibraMedios': [{'name': 'MTV-FibraMed. en Directo',
                        'thumb': 'https://archive.org/download/tvmfibraz_202208/TVMfibraz.jpg',
                        'video': 'http://antomora.dyndns.biz:6856/cvbs',
-                       'genre': 'MTV-fibra'},
+                       'genre': 'Moratalla TV - FibraMedios'},
                      ]}
 
 
