@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon id="plugin.video.tvmfibraz"
-version="0.0.2"
-name="[COLOR darkviolet]Moratralla Fibraz-Medium[/COLOR]"
-provider-name="DuMo">
+version="0.1.0"
+name="[COLOR fuchsia]MorateallaTV[/COLOR]"
+provider-name="GMC-Team">
 <requires>
   <import addon="xbmc.python" version="2.25.0"/>
 </requires>
