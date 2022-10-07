@@ -23,16 +23,16 @@ addonVersion        = xbmcaddon.Addon().getAddonInfo("version")
 addonId             = xbmcaddon.Addon().getAddonInfo("id")
 addonPath           = xbmcaddon.Addon().getAddonInfo("path")
 
-version="(v0.0.3)"
+version="(v1.0.0)"
 
 addonPath           = xbmcaddon.Addon().getAddonInfo("path")
-mi_data = xbmc.translatePath(os.path.join('special://home/userdata/addon_data/plugin.video.TorrentAcestream/'))
-mi_addon = xbmc.translatePath(os.path.join('special://home/addons/plugin.video.TorrentAcestream'))
+mi_data = xbmc.translatePath(os.path.join('special://home/userdata/addon_data/plugin.video.TorrentsTV/'))
+mi_addon = xbmc.translatePath(os.path.join('special://home/addons/plugin.video.TorrentsTV'))
 
 fondo = xbmc.translatePath(os.path.join(mi_addon,'fanart.jpg'))
 logoprin = xbmc.translatePath(os.path.join(mi_addon,'icon.png'))
 
-mislogos = xbmc.translatePath(os.path.join('special://home/addons/plugin.video.TorrentAcestream/jpg/'))
+mislogos = xbmc.translatePath(os.path.join('special://home/addons/plugin.video.TorrentsTV/jpg/'))
 logobusca = xbmc.translatePath(os.path.join(mislogos , 'buscar.jpg'))
 logo_volver = xbmc.translatePath(os.path.join(mislogos , 'volver.png'))
 logo_siguiente = xbmc.translatePath(os.path.join(mislogos , 'siguiente.png'))
@@ -44,46 +44,35 @@ logo_HD = xbmc.translatePath(os.path.join(mislogos , 'logo_HD.jpg'))
 logo_4K = xbmc.translatePath(os.path.join(mislogos , 'logo_4K.jpg'))
 logo_Genero = xbmc.translatePath(os.path.join(mislogos , 'generos.jpeg'))
 
+usaElementum = False
 setting = xbmcaddon.Addon().getSetting
-marcar_visto = False
-pregunta_marcar = False
-if setting('marcar_visto') == "true":
-    marcar_visto = True
-if setting('pregunta_marcar') == "true":
-    pregunta_marcar = True    
+if setting('lanzarCon') == "0":  ##0 = Elementum  1 = Horus+Acestream
+    usaElementum = True
 
-web = plugintools.find_single_match(httptools.downloadpage(base64.b64decode("aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0FjZVRvcnIvZnV0dHJlYW0vbWFpbi9EYXRvc0NvbmY=".encode('utf-8')).decode('utf-8')).data,'xxx(.*?)xxx')
+
+datosConf = httptools.downloadpage(base64.b64decode("aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL0FjZVRvcnIvZnV0dHJlYW0vbWFpbi9EYXRvc0NvbmY=".encode('utf-8')).decode('utf-8')).data
+
+if not "<TTV>" in datosConf:
+    datosConf = httptools.downloadpage(base64.b64decode("aHR0cHM6Ly9yZW50cnkuY28veHM2YmYvcmF3".encode('utf-8')).decode('utf-8')).data
+
+web = plugintools.find_single_match(datosConf,'TTV>(.*?)<Fin')
 headers = {'Referer': web}
+
 
 peliSD = web + "peliculas/page/"
 peliHD = web + "peliculas/hd/page/"
 peli4K = web + "peliculas/4K/page/"
+
+serieSD = web + "series/page/"
+serieHD = web + "series/hd/page/"
 
 horus = "eydhY3Rpb24nOiAncGxheScsICdmYW5hcnQnOiAnJywgJ2ljb24nOiAnTUktSUNPTk8nLCAndXJsJzogJ01JLVRPUlJFTlQnLCAnbGFiZWwnOiAnTUktVElUVUxPJ30="
 
 if not os.path.exists(mi_data):
 	os.makedirs(mi_data)  # Si no existe el directorio, lo creo
 
-vistos = xbmc.translatePath(os.path.join('special://home/userdata/addon_data/plugin.video.TorrentAcestream/vistos.db'))
-if not os.path.exists(vistos):
-    if sys.version_info[0] < 3:
-        crear=open(vistos, "w+")
-    else:
-        crear=open(vistos, "w+", encoding='utf-8')
-    crear.close()
 
-cabecera = "[COLOR mediumslateblue][B]      Torrents-Acestream  "+version+" [COLOR red]        ····[COLOR yellowgreen]by AceTorr[COLOR red]····[/B][/COLOR]"
-	
-#Para comprobar los videos que ya estén vistos y así marcarlos como vistos.
-if marcar_visto:
-    #v=open(vistos, "r")
-    if sys.version_info[0] < 3:
-        v = open( vistos, "r" )
-    else:
-        v = open( vistos, "r", encoding='utf-8' )
-
-    pelis_vistas = v.read()
-    v.close()
+cabecera = "[COLOR moccasin][B]      TorrentsTV  "+version+" [COLOR red]        ····[COLOR yellowgreen]by AceTorr[COLOR red]····[/B][/COLOR]"
 
 
 
@@ -114,13 +103,18 @@ def main_list(params):
     plugintools.add_item(action="abre_categoria",url=peliSD,title='[COLOR white]Peliculas SD[/COLOR]' , page=pagina, thumbnail=logo_SD, fanart=fondo, folder=True, isPlayable=False)
     plugintools.add_item(action="abre_categoria",url=peliHD,title='[COLOR white]Peliculas HD[/COLOR]' , page=pagina, thumbnail=logo_HD, fanart=fondo, folder=True, isPlayable=False)
     plugintools.add_item(action="abre_categoria",url=peli4K,title='[COLOR white]Peliculas 4K[/COLOR]' , page=pagina, thumbnail=logo_4K, fanart=fondo, folder=True, isPlayable=False)
-    plugintools.add_item(action="lista_generos",url="",title='[COLOR white]Géneros[/COLOR]' ,thumbnail=logo_Genero, fanart=fondo, page=pagina, folder=True, isPlayable=False)
+    plugintools.add_item(action="lista_generos",url="",title='[COLOR white]Películas por Géneros[/COLOR]' ,thumbnail=logo_Genero, fanart=fondo, page=pagina, folder=True, isPlayable=False)
+
+    if usaElementum:
+        plugintools.add_item(action="abre_categoria",url=serieSD,title='[COLOR white]Series SD[/COLOR]' , page=pagina, thumbnail=logo_SD, fanart=fondo, folder=True, isPlayable=False)
+        plugintools.add_item(action="abre_categoria",url=serieHD,title='[COLOR white]Series HD[/COLOR]' , page=pagina, thumbnail=logo_HD, fanart=fondo, folder=True, isPlayable=False)
 
     datamovie = {}
-    datamovie["Plot"]="Buscar Peliculas por palabras clave."
-    plugintools.add_item(action="fBusca",url="",title="[COLOR blue]Búsqueda[/COLOR]",extra="", show="", thumbnail=logobusca, fanart=fondo, page=pagina, info_labels = datamovie, folder=True, isPlayable=False)
+    datamovie["Plot"]="Buscar Películas y Series por palabras clave."
+    plugintools.add_item(action="fBusca",url="",title="[COLOR blue]Búsqueda de Películas y Series[/COLOR]", extra="", thumbnail=logobusca, fanart=fondo, page=pagina, info_labels = datamovie, folder=True, isPlayable=False)
+    
     datamovie = {}
-    datamovie["Plot"]="Salir de TorrentAcestream..."
+    datamovie["Plot"]="Salir de TorrentsTV..."
     plugintools.add_item(action="salida",url="",title="[COLOR red]Salir[/COLOR]",thumbnail=logo_salida, extra="", fanart="https://i.imgur.com/Cp1t1lb.png", info_labels = datamovie, folder=False, isPlayable=False)
     
     plugintools.add_item(action="", url="", title="", genre="NOGESTIONAR", thumbnail=logo_transparente, fanart=fondo, folder=False, isPlayable=False)
@@ -137,6 +131,10 @@ def abre_categoria(params):
     pagina = params.get("page")
 
     xbmcplugin.setContent( int(sys.argv[1]) ,"tvshows" )
+    
+    esSerie = False
+    if "series/" in url:
+        esSerie = True
     
     if len(extra) != 0: ## Si trae texto es q viene de llamada recursiva por paginación
         #Entraigo Titulo y logo de 1ª página
@@ -156,56 +154,83 @@ def abre_categoria(params):
     
     acotacion = '<div class="text-center'  ##Acotacion de los grupos de 3
     bloq_videos = plugintools.find_multiple_matches(data,acotacion+'(.*?)</div')
+
     for bloque in bloq_videos:
         acota2 = '<a href=' ##Acotacion de los 3 videos del bloque
         videos = plugintools.find_multiple_matches(bloque,acota2+'(.*?)<img')
         for item in videos:
             acota3 = '"/'
             url_vid = web + plugintools.find_single_match(item,acota3+'(.*?)"')  ##Obtengo la página donde está todo lo necesario para esa Peli, así q la leo y los obtengo
-            
+            #plugintools.log("*****************Item: "+item+"********************")
             data2 = httptools.downloadpage(url_vid, headers=headers).data
             acota4 = 'descargarTitulo"'
-            titul0 = plugintools.find_single_match(data2,acota4+'(.*?)h1>')
-            acota4 = '>Descargar '
-            titul = plugintools.find_single_match(titul0,acota4+'(.*?)<').replace("por Torrent" , "").title().strip()
-            
-            acota4 = "anyo', valor: '"
-            anio = plugintools.find_single_match(data2,acota4+"(.*?)'")
+            if esSerie:
+                acotafin = "h2>"
+            else:
+                acotafin = "h1>"
+                
+            titul0 = plugintools.find_single_match(data2,acota4+'(.*?)'+acotafin)
+            #plugintools.log("*****************Titu10: "+titul0+"********************")
 
-            acota4 = "Formato:</b> "
-            calidad = plugintools.find_single_match(data2,acota4+"(.*?)</p")
+            if esSerie:
+                acota4 = '>'
+                titul = plugintools.find_single_match(titul0,acota4+'(.*?)<').replace("por Torrent" , "").title().strip()
+                
+                acota4 = "Episodios:</b> "
+                episodios = plugintools.find_single_match(data2,acota4+"(.*?)<")
 
-            titulo = titul + "[COLOR orange]   -" + anio + "-[/COLOR]" + "   [COLOR blue]" + calidad + "[/COLOR]"
+                acota4 = "Formato:</b> "
+                calidad = plugintools.find_single_match(data2,acota4+"(.*?)</p")
 
-            acota4 = 'image" content="'
-            logo = plugintools.find_single_match(data2,acota4+'(.*?)"')
+                titulo = titul + "[COLOR orange]   -" + episodios + " Episodios-[/COLOR]" + "   [COLOR blue]" + calidad + "[/COLOR]"
+
+                acota4 = 'image" content="'
+                logo = plugintools.find_single_match(data2,acota4+'(.*?)"')
+                
+                acota4 = 'bold">Descrip'
+                sinop = plugintools.find_single_match(data2,acota4+"(.*?)</div>")  ## Primer acercamiento a la sinopsis
+                acota4 = '/b>'
+                sinopsis = plugintools.find_single_match(sinop,acota4+"(.*?)</p>")  ## Ahora si la tengo
+                
+            else:
+                acota4 = '>Descargar '
+                titul = plugintools.find_single_match(titul0,acota4+'(.*?)<').replace("por Torrent" , "").title().strip()
+                
+                acota4 = "anyo', valor: '"
+                anio = plugintools.find_single_match(data2,acota4+"(.*?)'")
+
+                acota4 = "Formato:</b> "
+                calidad = plugintools.find_single_match(data2,acota4+"(.*?)</p")
+
+                titulo = titul + "[COLOR orange]   -" + anio + "-[/COLOR]" + "   [COLOR blue]" + calidad + "[/COLOR]"
+
+                acota4 = 'image" content="'
+                logo = plugintools.find_single_match(data2,acota4+'(.*?)"')
+                
+                acota4 = "href='//"
+                torrent = "https://" + plugintools.find_single_match(data2,acota4+"(.*?)'")
+                
+                acota4 = 'bold">Descrip'
+                sinop = plugintools.find_single_match(data2,acota4+"(.*?)</div>")  ## Primer acercamiento a la sinopsis
+                acota4 = '/b>'
+                sinopsis = plugintools.find_single_match(sinop,acota4+"(.*?)</p>")  ## Ahora si la tengo
+                
+                if usaElementum:
+                    mivideo = "plugin://plugin.video.elementum/play?uri=" + torrent
+                else:
+                    reemplaza = base64.b64decode(horus.encode('utf-8')).decode('utf-8').replace("MI-TORRENT" , torrent)
+                    reemplaza = reemplaza.replace("MI-ICONO" , logo)
+                    reemplaza = reemplaza.replace("MI-TITULO" , titulo)
+                    mivideo = "plugin://script.module.horus/?" + base64.b64encode(reemplaza.encode('utf-8')).decode('utf-8')
             
-            acota4 = "href='//"
-            torrent = "https://" + plugintools.find_single_match(data2,acota4+"(.*?)'")
-            
-            acota4 = 'bold">Descrip'
-            sinop = plugintools.find_single_match(data2,acota4+"(.*?)</div>")  ## Primer acercamiento a la sinopsis
-            acota4 = '/b>'
-            sinopsis = plugintools.find_single_match(sinop,acota4+"(.*?)</p>")  ## Ahora si la tengo
-            
-            #reemplaza = base64.b64decode(horus.encode('utf-8')).decode('utf-8').replace("MI-TORRENT" , "https://bit.ly/3DAMgUo")
-            reemplaza = base64.b64decode(horus.encode('utf-8')).decode('utf-8').replace("MI-TORRENT" , torrent)
-            reemplaza = reemplaza.replace("MI-ICONO" , logo)
-            reemplaza = reemplaza.replace("MI-TITULO" , titulo)
-            mivideo = "plugin://script.module.horus/?" + base64.b64encode(reemplaza.encode('utf-8')).decode('utf-8')
-            
-            #Comprobamos si alguno está en la BD de vistos, y si es así lo marco como visto.
-            marcalo = ""
-            if marcar_visto:
-                if titulo in pelis_vistas:
-                    marcalo = "[COLOR green][B]√[/B][/COLOR]"
-        
             titu = '[COLOR white]' + titulo + "[/COLOR]"
-            titu = marcalo + titu
             
             datamovie = {}
             datamovie["Plot"] = sinopsis
-            plugintools.add_item(action="lanza", url=mivideo, title=titu, extra=titulo, genre="NOGESTIONAR", thumbnail=logo, fanart=fondo, info_labels = datamovie, folder=False, isPlayable=False)
+            if esSerie:
+                plugintools.add_item(action="temporada", url=url_vid, title=titu, extra=titulo, genre="NOGESTIONAR", thumbnail=logo, fanart=fondo, info_labels = datamovie, folder=True, isPlayable=False)
+            else:
+                plugintools.add_item(action="lanza", url=mivideo, title=titu, extra=titulo, genre="NOGESTIONAR", thumbnail=logo, fanart=fondo, info_labels = datamovie, folder=False, isPlayable=False)
             
     pag_actual = pagina
     pagina = str(int(pagina)+1)
@@ -213,6 +238,42 @@ def abre_categoria(params):
     plugintools.add_item(action="abre_categoria", url=url, title=texto, page = pagina, extra=extra, genre="NOGESTIONAR", thumbnail="", fanart=fondo, folder=True, isPlayable=False)
     plugintools.add_item(action="main_list", url="", title="[COLOR orangered]···· Volver a Menú Principal ····[/COLOR]", extra=extra ,thumbnail=logo_volver, fanart=fondo, folder=True, isPlayable=False)
     
+
+
+def temporada(params):
+    url = params.get("url")
+    titu = params.get("title")
+    logo1 = params.get("thumbnail")
+    extra = params.get("extra")
+    pagina = params.get("page")
+    
+    #Abro la página y capturo los episodios
+    data = httptools.downloadpage(url, headers=headers).data
+    acotacion = '<tbody><tr>'
+    bloq_videos = "<tr>" + plugintools.find_single_match(data,acotacion+'(.*?)</tbody')
+    
+    acotacion = '<tr>'
+    cada_video = plugintools.find_multiple_matches(bloq_videos,acotacion+'(.*?)</tr')
+
+    for item in cada_video:
+        lineas = plugintools.find_multiple_matches(item,'<td(.*?)</td')
+        
+        abuscar = lineas[0] + "<"  ## en la 1ª linea está el nº episodio
+        episodio = plugintools.find_single_match(abuscar,'>(.*?)<')
+
+        abuscar = lineas[1] + "<"  ## en la 2ª linea está el torrent
+        acotacion = "href='"
+        torrent = "https:" + plugintools.find_single_match(abuscar,acotacion+"(.*?)'")
+
+        abuscar = lineas[2] + "<"  ## en la 3ª linea está la fecha del episodio
+        fecha = plugintools.find_single_match(abuscar,'>(.*?)<')
+
+        mivideo = "plugin://plugin.video.elementum/play?uri=" + torrent
+        titulo = "[COLOR white]" + episodio + "   [COLOR blue](" + fecha + ")[/COLOR]"
+       
+        plugintools.add_item(action="lanza", url=mivideo, title=titulo, extra=titulo, genre="NOGESTIONAR", thumbnail=logo1, fanart=fondo, folder=False, isPlayable=False)
+
+
 
 
 
@@ -274,8 +335,6 @@ def generos(params):
     #plugintools.log("*****************PelisGen: "+str(len(pelis_gen))+"********************")
     
     for item in pelis_gen:
-        #acota2 = 'style="right:6px;bottom:-383%">'
-        #calidad = plugintools.find_single_match(item,acota2+'(.*?)</span')
         acota3 = 'href="/'
         url_vid = web + plugintools.find_single_match(item,acota3+'(.*?)"')  ##Obtengo la página donde está todo lo necesario para esa Peli, así q la leo y los obtengo
         
@@ -304,19 +363,15 @@ def generos(params):
         acota4 = '/b>'
         sinopsis = plugintools.find_single_match(sinop,acota4+"(.*?)</p>")  ## Ahora si la tengo
         
-        reemplaza = base64.b64decode(horus.encode('utf-8')).decode('utf-8').replace("MI-TORRENT" , torrent)
-        reemplaza = reemplaza.replace("MI-ICONO" , logo)
-        reemplaza = reemplaza.replace("MI-TITULO" , titulo)
-        mivideo = "plugin://script.module.horus/?" + base64.b64encode(reemplaza.encode('utf-8')).decode('utf-8')
+        if usaElementum:
+            mivideo = "plugin://plugin.video.elementum/play?uri=" + torrent
+        else:
+            reemplaza = base64.b64decode(horus.encode('utf-8')).decode('utf-8').replace("MI-TORRENT" , torrent)
+            reemplaza = reemplaza.replace("MI-ICONO" , logo)
+            reemplaza = reemplaza.replace("MI-TITULO" , titulo)
+            mivideo = "plugin://script.module.horus/?" + base64.b64encode(reemplaza.encode('utf-8')).decode('utf-8')
         
-        #Comprobamos si alguno está en la BD de vistos, y si es así lo marco como visto.
-        marcalo = ""
-        if marcar_visto:
-            if titulo in pelis_vistas:
-                marcalo = "[COLOR green][B]√[/B][/COLOR]"
-    
         titu = '[COLOR white]' + titulo + "[/COLOR]"
-        titu = marcalo + titu
         
         #plugintools.log("*****************Titulo: "+titulo+"********************")
         datamovie = {}
@@ -339,8 +394,6 @@ def fBusca(params):
 
     xbmcplugin.setContent( int(sys.argv[1]) ,"tvshows" )
     
-    #plugintools.log("*****************Pag: "+pagina+"********************")
-
     if len(extra) == 0: ## Si NO trae texto es q viene de Menú Ppal.
         busqueda = plugintools.keyboard_input('', 'Introduzca [COLOR red]Texto[/COLOR] a Buscar.')
         if len(busqueda) == 0:
@@ -388,7 +441,7 @@ def fBusca(params):
             acota4 = "Formato:</b> "
             calidad = plugintools.find_single_match(data2,acota4+"(.*?)</p")
 
-            titulo = titul + "[COLOR orange]   -" + anio + "-[/COLOR]" + "   [COLOR blue]" + calidad + "[/COLOR]"
+            titulo = titul + "[COLOR orange]   -" + anio + "-[/COLOR]" + "[COLOR lime]" +"  Pelicula" + " [COLOR blue]" + calidad + "[/COLOR]"
             
             acota4 = "Formato:</b> "
             calidad = plugintools.find_single_match(data2,acota4+"(.*?)</p")
@@ -404,23 +457,57 @@ def fBusca(params):
             acota4 = '/b>'
             sinopsis = plugintools.find_single_match(sinop,acota4+"(.*?)</p>")  ## Ahora si la tengo
             
-            reemplaza = base64.b64decode(horus.encode('utf-8')).decode('utf-8').replace("MI-TORRENT" , torrent)
-            reemplaza = reemplaza.replace("MI-ICONO" , logo)
-            reemplaza = reemplaza.replace("MI-TITULO" , titulo)
-            mivideo = "plugin://script.module.horus/?" + base64.b64encode(reemplaza.encode('utf-8')).decode('utf-8')
+            if usaElementum:
+                mivideo = "plugin://plugin.video.elementum/play?uri=" + torrent
+            else:
+                reemplaza = base64.b64decode(horus.encode('utf-8')).decode('utf-8').replace("MI-TORRENT" , torrent)
+                reemplaza = reemplaza.replace("MI-ICONO" , logo)
+                reemplaza = reemplaza.replace("MI-TITULO" , titulo)
+                mivideo = "plugin://script.module.horus/?" + base64.b64encode(reemplaza.encode('utf-8')).decode('utf-8')
             
-            #Comprobamos si alguno está en la BD de vistos, y si es así lo marco como visto.
-            marcalo = ""
-            if marcar_visto:
-                if titulo in pelis_vistas:
-                    marcalo = "[COLOR green][B]√[/B][/COLOR]"
-        
             titu = '[COLOR white]' + titulo + "[/COLOR]"
-            titu = marcalo + titu
             
             datamovie = {}
             datamovie["Plot"] = sinopsis
             plugintools.add_item(action="lanza", url=mivideo, title=titu, extra=titulo, genre="NOGESTIONAR", thumbnail=logo, fanart=fondo, info_labels = datamovie, folder=False, isPlayable=False)
+    
+        if ("/serie/" in item) and usaElementum:  ##Es Serie y está elegido como Motor el Elementum, por lo q lo cojo
+            acota3 = "href='/"
+            url_vid = web + plugintools.find_single_match(item,acota3+"(.*?)'")  ##Obtengo la página donde está todo lo necesario para esa Peli, así q la leo y los obtengo
+            
+            data2 = httptools.downloadpage(url_vid, headers=headers).data
+            acota4 = 'descargarTitulo"'
+            acotafin = "h2>"
+                
+            titul0 = plugintools.find_single_match(data2,acota4+'(.*?)'+acotafin)
+            #plugintools.log("*****************Titu10: "+titul0+"********************")
+
+            acota4 = '>'
+            titul = plugintools.find_single_match(titul0,acota4+'(.*?)<').replace("por Torrent" , "").title().strip()
+            
+            acota4 = "Episodios:</b> "
+            episodios = plugintools.find_single_match(data2,acota4+"(.*?)<")
+
+            acota4 = "Formato:</b> "
+            calidad = plugintools.find_single_match(data2,acota4+"(.*?)</p")
+
+            titulo = titul + "[COLOR orange]   -" + episodios + " Episodios-[/COLOR]" + "[COLOR crimson]" +"  Serie" + " [COLOR blue]" + calidad + "[/COLOR]"
+
+            acota4 = 'image" content="'
+            logo = plugintools.find_single_match(data2,acota4+'(.*?)"')
+            
+            acota4 = 'bold">Descrip'
+            sinop = plugintools.find_single_match(data2,acota4+"(.*?)</div>")  ## Primer acercamiento a la sinopsis
+            acota4 = '/b>'
+            sinopsis = plugintools.find_single_match(sinop,acota4+"(.*?)</p>")  ## Ahora si la tengo
+                
+            
+            titu = '[COLOR white]' + titulo + "[/COLOR]"
+            
+            datamovie = {}
+            datamovie["Plot"] = sinopsis
+            plugintools.add_item(action="temporada", url=url_vid, title=titu, extra=titulo, genre="NOGESTIONAR", thumbnail=logo, fanart=fondo, info_labels = datamovie, folder=True, isPlayable=False)
+            
     
     if ">Siguiente<" in pagbusca:  ## Hay mas páginas
         pag_actual = pagina
@@ -438,25 +525,7 @@ def lanza(params):
     titulo = params.get("extra")
     
     xbmc.Player().play(mivideo)
-
-    if marcar_visto:
-        import time
-        time.sleep(80)  # Para darle tiempo a q el .isPlaying pueda detectar que está reproduciendo
-        while xbmc.Player().isPlaying():
-            time.sleep(1)
-
-        if  not "[COLOR green][B]" in titu:  # El video NO está marcado aún como "Visto", así q lo marco
-            marcar = True
-            if pregunta_marcar:
-                marcar  = xbmcgui.Dialog().yesno("¡¡Atención!!", "¿Desea Marcar como 'VISTO' este Video?:"+"\n\n"+titulo )
-            if marcar:
-                if sys.version_info[0] < 3:
-                    fichero = open( vistos, "a" )
-                else:
-                    fichero = open( vistos, "a", encoding='utf-8' )
-
-                fichero.write(titulo+"\n")  # Añado todo el Titulo completo del video al final del fichero de control
-                fichero.close()
+    
 
 
 
