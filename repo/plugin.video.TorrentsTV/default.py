@@ -23,7 +23,7 @@ addonVersion        = xbmcaddon.Addon().getAddonInfo("version")
 addonId             = xbmcaddon.Addon().getAddonInfo("id")
 addonPath           = xbmcaddon.Addon().getAddonInfo("path")
 
-version="(v1.0.0)"
+version="(v1.0.1)"
 
 addonPath           = xbmcaddon.Addon().getAddonInfo("path")
 mi_data = xbmc.translatePath(os.path.join('special://home/userdata/addon_data/plugin.video.TorrentsTV/'))
@@ -55,8 +55,21 @@ datosConf = httptools.downloadpage(base64.b64decode("aHR0cHM6Ly9yYXcuZ2l0aHVidXN
 if not "<TTV>" in datosConf:
     datosConf = httptools.downloadpage(base64.b64decode("aHR0cHM6Ly9yZW50cnkuY28veHM2YmYvcmF3".encode('utf-8')).decode('utf-8')).data
 
-web = plugintools.find_single_match(datosConf,'TTV>(.*?)<Fin')
+datosTel = plugintools.find_single_match(datosConf,'TTVtel>(.*?)<Fin')
+telegram = httptools.downloadpage(datosTel).data
+
+#plugintools.log("*****************TELEGRAM: "+telegram+"********************")
+telegram = telegram.replace("(Disponible)" , "DESDE_AQUI")
+acotacion = 'DESDE_AQUI'
+provisional = plugintools.find_single_match(telegram,acotacion+'(.*?)<i')
+
+web = plugintools.find_single_match(provisional,'href="(.*?)"')
 headers = {'Referer': web}
+
+
+if len(web) == 0:  ##Hay algún problema en el canal Telegram
+    web = plugintools.find_single_match(datosConf,'TTV>(.*?)<Fin')
+    headers = {'Referer': web}
 
 
 peliSD = web + "peliculas/page/"
@@ -70,6 +83,14 @@ horus = "eydhY3Rpb24nOiAncGxheScsICdmYW5hcnQnOiAnJywgJ2ljb24nOiAnTUktSUNPTk8nLCA
 
 if not os.path.exists(mi_data):
 	os.makedirs(mi_data)  # Si no existe el directorio, lo creo
+
+ult_Busca = xbmc.translatePath(os.path.join('special://home/userdata/addon_data/plugin.video.TorrentsTV/ult_Busca.txt'))
+if not os.path.exists(ult_Busca):
+    if sys.version_info[0] < 3:
+        crear=open(ult_Busca, "w+")
+    else:
+        crear=open(ult_Busca, "w+", encoding='utf-8')
+    crear.close()
 
 
 cabecera = "[COLOR moccasin][B]      TorrentsTV  "+version+" [COLOR red]        ····[COLOR yellowgreen]by AceTorr[COLOR red]····[/B][/COLOR]"
@@ -104,14 +125,17 @@ def main_list(params):
     plugintools.add_item(action="abre_categoria",url=peliHD,title='[COLOR white]Peliculas HD[/COLOR]' , page=pagina, thumbnail=logo_HD, fanart=fondo, folder=True, isPlayable=False)
     plugintools.add_item(action="abre_categoria",url=peli4K,title='[COLOR white]Peliculas 4K[/COLOR]' , page=pagina, thumbnail=logo_4K, fanart=fondo, folder=True, isPlayable=False)
     plugintools.add_item(action="lista_generos",url="",title='[COLOR white]Películas por Géneros[/COLOR]' ,thumbnail=logo_Genero, fanart=fondo, page=pagina, folder=True, isPlayable=False)
+    datamovie = {}
+    datamovie["Plot"]="Buscar Películas por palabras clave."
+    plugintools.add_item(action="fBusca",url="",title="[COLOR blue]Búsqueda de Películas[/COLOR]", extra="", plot="Peliculas", thumbnail=logobusca, fanart=fondo, page=pagina, info_labels = datamovie, folder=True, isPlayable=False)
 
     if usaElementum:
         plugintools.add_item(action="abre_categoria",url=serieSD,title='[COLOR white]Series SD[/COLOR]' , page=pagina, thumbnail=logo_SD, fanart=fondo, folder=True, isPlayable=False)
         plugintools.add_item(action="abre_categoria",url=serieHD,title='[COLOR white]Series HD[/COLOR]' , page=pagina, thumbnail=logo_HD, fanart=fondo, folder=True, isPlayable=False)
 
     datamovie = {}
-    datamovie["Plot"]="Buscar Películas y Series por palabras clave."
-    plugintools.add_item(action="fBusca",url="",title="[COLOR blue]Búsqueda de Películas y Series[/COLOR]", extra="", thumbnail=logobusca, fanart=fondo, page=pagina, info_labels = datamovie, folder=True, isPlayable=False)
+    datamovie["Plot"]="Buscar Series por palabras clave."
+    plugintools.add_item(action="fBusca",url="",title="[COLOR blue]Búsqueda de Series[/COLOR]", extra="", plot="Series", thumbnail=logobusca, fanart=fondo, page=pagina, info_labels = datamovie, folder=True, isPlayable=False)
     
     datamovie = {}
     datamovie["Plot"]="Salir de TorrentsTV..."
@@ -390,14 +414,36 @@ def fBusca(params):
     titu = params.get("title")
     logo1 = params.get("thumbnail")
     extra = params.get("extra")
+    peliSerie = params.get("plot")
     pagina = params.get("page")
 
     xbmcplugin.setContent( int(sys.argv[1]) ,"tvshows" )
     
     if len(extra) == 0: ## Si NO trae texto es q viene de Menú Ppal.
-        busqueda = plugintools.keyboard_input('', 'Introduzca [COLOR red]Texto[/COLOR] a Buscar.')
+        ##Miro si hay guardada una búsqueda anterior y la pongo
+        if sys.version_info[0] < 3:
+            v = open( ult_Busca, "r" )
+        else:
+            v = open( ult_Busca, "r", encoding='utf-8' )
+
+        leido = v.read()
+        v.close()
+        elTexto = plugintools.find_single_match(leido,"INICIO>(.*?)<FIN")
+        
+        #busqueda = plugintools.keyboard_input('', 'Introduzca [COLOR red]Texto[/COLOR] a Buscar.')
+        busqueda = plugintools.keyboard_input(elTexto, 'Introduzca [COLOR red]Texto[/COLOR] a Buscar.')
         if len(busqueda) == 0:
             xbmc.executebuiltin('ActivateWindow(10000,return)')  ##Vuelvo al menú ppal.
+        else:  ## Guardo la última búsqueda
+            if sys.version_info[0] < 3:
+                fichero = open( ult_Busca, "w+" )
+            else:
+                fichero = open( ult_Busca, "w+", encoding='utf-8' )
+
+            fichero.write("INICIO>"+busqueda+"<FIN")
+            fichero.close()
+        
+        
         
         titu = "[COLOR lime]·····  Buscar:[B]   " + busqueda + "[/B]  ·····[/COLOR]"
         #Meto en extra el titulo y el logo por si viene de vuelta en llamada de paginación
@@ -425,7 +471,7 @@ def fBusca(params):
 
     ##Nos deshacemos de los que no sean "pelicula"... series, docuseries, etc
     for item in pelis_busca:
-        if "/pelicula/" in item:  ##Es película, por lo q lo cojo
+        if ("/pelicula/" in item) and (peliSerie == "Peliculas"):  ##Es película, por lo q lo cojo
             acota3 = "href='/"
             url_vid = web + plugintools.find_single_match(item,acota3+"(.*?)'")  ##Obtengo la página donde está todo lo necesario para esa Peli, así q la leo y los obtengo
             
@@ -471,7 +517,7 @@ def fBusca(params):
             datamovie["Plot"] = sinopsis
             plugintools.add_item(action="lanza", url=mivideo, title=titu, extra=titulo, genre="NOGESTIONAR", thumbnail=logo, fanart=fondo, info_labels = datamovie, folder=False, isPlayable=False)
     
-        if ("/serie/" in item) and usaElementum:  ##Es Serie y está elegido como Motor el Elementum, por lo q lo cojo
+        if ("/serie/" in item) and (peliSerie == "Series") and usaElementum:  ##Es Serie y está elegido como Motor el Elementum, por lo q lo cojo
             acota3 = "href='/"
             url_vid = web + plugintools.find_single_match(item,acota3+"(.*?)'")  ##Obtengo la página donde está todo lo necesario para esa Peli, así q la leo y los obtengo
             
