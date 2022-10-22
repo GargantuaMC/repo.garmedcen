@@ -15,7 +15,7 @@
         <fanart>fanart.jpg</fanart>
     </assets>
   </extension>
-</addon><addon id="plugin.video.TorrentsTV" name="[COLOR moccasin]TorrentsTV[/COLOR]" version="1.0.1" provider-name="AceTorr">
+</addon><addon id="plugin.video.TorrentsTV" name="[COLOR moccasin]TorrentsTV[/COLOR]" version="1.0.2" provider-name="AceTorr">
   <requires>
    <import addon="script.module.six" />
   </requires>
@@ -31,6 +31,43 @@
         <fanart>fanart.jpg</fanart>
     </assets>
   </extension>
+</addon><addon id="plugin.video.koditv" version="3" name="[B][COLOR white]kodi[COLOR aqua]tv[/COLOR][/B]" provider-name="equipo tvchopo">
+<requires>
+    <import addon="plugin.video.youtube" /> 
+    <import addon="script.module.requests" />
+    <import addon="script.module.resolveurl" />
+    <import addon="script.module.six" />
+  </requires>
+	<extension point="xbmc.python.pluginsource" library="default.py">
+		<provides>video</provides>
+	</extension>
+	
+	 <extension point="xbmc.addon.repository" name="tvchopo">
+        <info>https://raw.githubusercontent.com/elchocolate/repotvchopo/master/Repositorio/addons.xml</info>
+        <checksum>https://raw.githubusercontent.com/elchocolate/repotvchopo/master/Repositorio/addons.xml.md5</checksum>
+        <datadir zip="true">https://raw.githubusercontent.com/elchocolate/repotvchopo/master/Repositorio/</datadir>
+    </extension>
+	
+	
+	<extension point="xbmc.addon.metadata">
+                <platform>all</platform>
+		<summary lang="en" />
+		<summary lang="da" />
+		<description lang="en" />
+		<website />
+		<license>GPL 2.0</license>
+		<platform>all</platform>
+<assets>
+        <icon>icon.jpg</icon>
+  <screenshot>resources/screenshots/screenshot1.jpg</screenshot>
+  <screenshot>resources/screenshots/screenshot2.jpg</screenshot>
+  <screenshot>resources/screenshots/screenshot3.jpg</screenshot>
+  <screenshot>resources/screenshots/screenshot4.jpg</screenshot>
+  <screenshot>resources/screenshots/screenshot5.jpg</screenshot>
+        <fanart>fanart.png</fanart>
+    </assets>        
+		<language>es</language>
+	</extension>
 </addon><addon id="plugin.video.tvmfibraz" version="1.2.3" name="[COLOR violet]VC-MTV-FMT[/COLOR]" provider-name="GMC-Team">
 <requires>
   <import addon="xbmc.python" version="2.25.0" />
@@ -102,6 +139,18 @@
             <fanart>fanart.jpg</fanart>
         </assets>
     </extension>
+</addon><addon id="repository.tvchopo" name="[COLOR lime]tvchopo[/COLOR] Repo" version="2.0.0" provider-name="torete">
+    <extension point="xbmc.addon.repository" name="tvchoco Jose">
+        <info>https://raw.githubusercontent.com/elchocolate/repotvchopo/master/Repositorio/addons.xml</info>
+        <checksum>https://raw.githubusercontent.com/elchocolate/repotvchopo/master/Repositorio/addons.xml.md5</checksum>
+        <datadir zip="true">https://raw.githubusercontent.com/elchocolate/repotvchopo/master/Repositorio/</datadir>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Repositorio para los mios</summary>
+        <description />
+        <disclaimer />
+        <platform>all</platform>
+    </extension>
 </addon><addon id="script.get.packages" name="Configurador GARGANTÚA-MC" version="6.67" provider-name="Gargantúa-MC">
     <requires>
         <import addon="xbmc.python" version="2.25.0" />
@@ -128,6 +177,19 @@
             <fanart>resources/fanart.jpg</fanart>
         </assets>
     </extension>
+</addon><addon id="script.module.pyamf" name="PyAMF" version="0.6.2" provider-name="Mark Honeychurch (markhoney)">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary>PyAMF provides Action Message Format (AMF) support for Python that is compatible with the Adobe Flash Player.</summary>
+    <description>The Adobe Integrated Runtime and Adobe Flash Player use AMF to communicate between an application and a remote server. AMF encodes remote procedure calls (RPC) into a compact binary representation that can be transferred over HTTP/HTTPS or the RTMP/RTMPS protocol. Objects and data values are serialized into this binary format, which increases performance, allowing applications to load data up to 10 times faster than with text-based formats such as XML or SOAP.
+AMF3, the default serialization for ActionScript 3.0, provides various advantages over AMF0, which is used for ActionScript 1.0 and 2.0. AMF3 sends data over the network more efficiently than AMF0. AMF3 supports sending int and uint objects as integers and supports data types that are available only in ActionScript 3.0, such as ByteArray, ArrayCollection, ObjectProxy and IExternalizable.</description>
+    <license>MIT</license>
+    <platform>all</platform>
+	<source>http://www.pyamf.org/</source>
+  </extension>
 </addon><addon id="skin.gargantua" version="6.6.2022" name="GargantuaSKIN" provider-name="GargantuaTeam, Confluence Mod">
 	<requires>
 		<import addon="xbmc.gui" version="5.14.0" />

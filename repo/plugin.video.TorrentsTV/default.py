@@ -23,7 +23,7 @@ addonVersion        = xbmcaddon.Addon().getAddonInfo("version")
 addonId             = xbmcaddon.Addon().getAddonInfo("id")
 addonPath           = xbmcaddon.Addon().getAddonInfo("path")
 
-version="(v1.0.1)"
+version="(v1.0.2)"
 
 addonPath           = xbmcaddon.Addon().getAddonInfo("path")
 mi_data = xbmc.translatePath(os.path.join('special://home/userdata/addon_data/plugin.video.TorrentsTV/'))
@@ -65,6 +65,7 @@ provisional = plugintools.find_single_match(telegram,acotacion+'(.*?)<i')
 
 web = plugintools.find_single_match(provisional,'href="(.*?)"')
 headers = {'Referer': web}
+#plugintools.log("*****************WEB: "+web+"********************")
 
 
 if len(web) == 0:  ##Hay algún problema en el canal Telegram
@@ -468,6 +469,7 @@ def fBusca(params):
     pagbusca = httptools.downloadpage(url, headers=headers).data
     acotacion = '<p><span><a'  ##Acotacion de todos los encontrados
     pelis_busca = plugintools.find_multiple_matches(pagbusca,acotacion+'(.*?)</p>')
+    
 
     ##Nos deshacemos de los que no sean "pelicula"... series, docuseries, etc
     for item in pelis_busca:
@@ -559,7 +561,7 @@ def fBusca(params):
         pag_actual = pagina
         pagina = str(int(pagina)+1)
         texto = "[COLOR mediumaquamarine]Pág: " + pag_actual + "[COLOR lime]                  Ir a Siguiente >>>[/COLOR]"        
-        plugintools.add_item(action="fBusca", url=url, title=texto, page = pagina, extra=extra, thumbnail=logo_siguiente, fanart=fondo, folder=True, isPlayable=False)
+        plugintools.add_item(action="fBusca", url=url, title=texto, page = pagina, extra=extra, plot=peliSerie, thumbnail=logo_siguiente, fanart=fondo, folder=True, isPlayable=False)
         plugintools.add_item(action="main_list", url="", title="[COLOR orangered]···· Volver a Menú Principal ····[/COLOR]", extra=extra ,thumbnail=logo_volver, fanart=fondo, folder=True, isPlayable=False)
             
 
@@ -570,7 +572,13 @@ def lanza(params):
     titu = params.get("title")
     titulo = params.get("extra")
     
-    xbmc.Player().play(mivideo)
+    #xbmc.Player().play(mivideo)
+    logo = logo.replace("https://images.weserv.nl/?url=" , "")
+    #plugintools.log("*****************Logo: "+logo+"********************")
+    li = xbmcgui.ListItem(titu)
+    li.setInfo(type='Video', infoLabels="")
+    li.setArt({ 'thumb': logo})
+    xbmc.Player().play(mivideo, li)
     
 
 
