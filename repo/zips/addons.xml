@@ -1,5 +1,44 @@
 <?xml version='1.0' encoding='utf-8'?>
-<addons><addon id="plugin.video.FutbolTream" name="[COLOR mediumslateblue]FutbolTream[/COLOR]" version="0.2.1" provider-name="AceTorr">
+<addons><addon id="plugin.program.ADVSet" name="[COLOR orange] ADV [/COLOR]Set" version="2.4" provider-name="Chem@i">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.service" library="startup.py" start="startup" />
+  <extension point="xbmc.addon.metadata">
+  <summary>ADV Set - Utilidades by Chem@i</summary>
+  <description>ADV Set. Utilidades extraídas de la web, siendo propiedad de sus autores, para el mantenimiento, optimización, y backup de Kodi. Utilízalo con precaución.</description>
+	<news>[COLOR orange] ADV [/COLOR]Set v 2.4
+* Modificacion en test de los archivos Advanced Settings.
+
+	  </news>
+	  <disclaimer>[COLOR red][B]Enjoy KODI.[/B][/COLOR]</disclaimer>
+	  <platform>all</platform>
+	  <assets>
+      <icon>icon.png</icon>
+      <fanart>fanart.jpg</fanart>
+    			<screenshot>resources/media/screenshot000.jpg</screenshot>
+    			<screenshot>resources/media/screenshot001.jpg</screenshot>
+    			<screenshot>resources/media/screenshot002.jpg</screenshot>
+    			<screenshot>resources/media/screenshot003.jpg</screenshot>
+    			<screenshot>resources/media/screenshot004.jpg</screenshot>				
+    </assets>
+    <license>GNU/GPL - v2</license>
+    <forum>https://docs.google.com/document/d/1nMUbPzMsP8f96eQBmLrd3vgYkEOyCAsfGif76VzazDM/edit</forum>
+    <website>web</website>
+    <email>my@email.com</email>
+    <source>https://</source>
+  </extension>
+  
+  <extension point="xbmc.addon.repository" name="Mi repositorio">
+        <info>https://raw.githubusercontent.com/picapaujulen/repositorio/master/Repositorio/addons.xml</info>
+        <checksum>https://raw.githubusercontent.com/picapaujulen/repositorio/master/Repositorio/addons.xml.md5</checksum>
+        <datadir zip="true">https://raw.githubusercontent.com/picapaujulen/repositorio/master/Repositorio/</datadir>
+    </extension>
+  
+</addon><addon id="plugin.video.FutbolTream" name="[COLOR mediumslateblue]FutbolTream[/COLOR]" version="0.2.1" provider-name="AceTorr">
   <requires>
    <import addon="script.module.six" />
   </requires>
@@ -15,7 +54,7 @@
         <fanart>fanart.jpg</fanart>
     </assets>
   </extension>
-</addon><addon id="plugin.video.TorrentsTV" name="[COLOR moccasin]TorrentsTV[/COLOR]" version="1.0.2" provider-name="AceTorr">
+</addon><addon id="plugin.video.TorrentsTV" name="[COLOR moccasin]TorrentsTV[/COLOR]" version="2.0.0" provider-name="AceTorr">
   <requires>
    <import addon="script.module.six" />
   </requires>
@@ -343,6 +382,29 @@
             <fanart>resources/fanart.jpg</fanart>
         </assets>
     </extension>
+</addon><addon id="script.kelebek" name="KELEBEK" version="3.5" provider-name="Iron Butterfly">
+  <requires>
+    <import addon="script.module.pyxbmct" version="1.1.4" />  
+    <import addon="script.module.beautifulsoup4" />	
+    <import addon="script.module.requests" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="main.py">
+	<provides>executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <summary>KELEBEK V3.5</summary>
+    <description>Scan Sources searching changes and addons</description>
+    <language />
+    <license />
+    <source />
+    <forum />
+    <website />
+	<assets>
+		<icon>resources/icon.png</icon>
+		<fanart>resources/fanart.jpg</fanart>
+	</assets>
+  </extension>
 </addon><addon id="script.module.pyamf" name="PyAMF" version="0.6.2" provider-name="Mark Honeychurch (markhoney)">
   <requires>
     <import addon="xbmc.python" version="2.1.0" />
@@ -356,6 +418,20 @@ AMF3, the default serialization for ActionScript 3.0, provides various advantage
     <platform>all</platform>
 	<source>http://www.pyamf.org/</source>
   </extension>
+</addon><addon id="script.sin.guason" name="Sin Guason" version="1.1.5" provider-name="Guason">
+    
+    <extension point="xbmc.service" library="startup.py" start="startup" />
+    
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">Sin Spaw en Kodi</summary>
+        <description lang="en">Sin Spaw en Kodi</description>
+        <platform>all</platform>
+        <source>https://</source>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.png</fanart>
+        </assets>
+    </extension>
 </addon><addon id="skin.gargantua" version="6.6.2022" name="GargantuaSKIN" provider-name="GargantuaTeam, Confluence Mod">
 	<requires>
 		<import addon="xbmc.gui" version="5.14.0" />
