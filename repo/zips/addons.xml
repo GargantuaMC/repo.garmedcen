@@ -107,7 +107,7 @@
     </assets>        
 		<language>es</language>
 	</extension>
-</addon><addon id="plugin.video.tvmfibraz" version="0.0.1" name="[COLOR mediumslatered]TVM-Fibraz[/COLOR]" provider-name="DuMo">
+</addon><addon id="plugin.video.tvmfibraz" version="1.2.3" name="[COLOR violet]VC-MTV-FMT[/COLOR]" provider-name="GMC-Team">
 <requires>
   <import addon="xbmc.python" version="2.25.0" />
 </requires>
@@ -115,7 +115,7 @@
   <provides>video</provides>
 </extension>
 <extension point="xbmc.addon.metadata">
-    <summary lang="es">Canal de televisión local de Moratalla: MTV-fibra</summary>
+    <summary lang="es">Canal de televisión local de Moratalla: MTV-FibraMedios</summary>
     <description>Televisión local de Moratalla</description>
     <platform>all</platform>
     <assets>

@@ -1,12 +1,12 @@
-# Module: main
+# -*- coding: utf-8 -*-
+# Module: default
 # Author: Roman V. M.
 # Created on: 28.11.2014
 # License: GPL v.3 https://www.gnu.org/copyleft/gpl.html
-"""
-Example video plugin that is compatible with Kodi 19.x "Matrix" and above
-"""
+
 import sys
-from urllib.parse import urlencode, parse_qsl
+from urllib import urlencode
+from urlparse import parse_qsl
 import xbmcgui
 import xbmcplugin
 
@@ -19,10 +19,10 @@ _handle = int(sys.argv[1])
 # Here we use a fixed set of properties simply for demonstrating purposes
 # In a "real life" plugin you will need to get info and links to video files/streams
 # from some web-site or online service.
-VIDEOS = {'MTV-fibra': [{'name': 'Directo',
-                       'thumb': 'https://archive.org/download/tvmfibraz_202208/TVMfibraz.jpg',
+VIDEOS = {'Moratalla TV - FibraMedios': [{'name': 'MTV-FibraMed. en Directo',
+                       'thumb': 'https://archive.org/download/morrate-logo/MorrateLogo.jpg',
                        'video': 'http://antomora.dyndns.biz:6856/cvbs',
-                       'genre': 'MTV-fibra'},
+                       'genre': 'Moratalla TV - FibraMedios'},
                      ]}
 
 
@@ -31,6 +31,7 @@ def get_url(**kwargs):
     Create a URL for calling the plugin recursively from the given set of keyword arguments.
 
     :param kwargs: "argument=value" pairs
+    :type kwargs: dict
     :return: plugin call URL
     :rtype: str
     """
@@ -43,7 +44,7 @@ def get_categories():
 
     Here you can insert some parsing code that retrieves
     the list of video categories (e.g. 'Movies', 'TV-shows', 'Documentaries' etc.)
-    from some site or API.
+    from some site or server.
 
     .. note:: Consider using `generator functions <https://wiki.python.org/moin/Generators>`_
         instead of returning lists.
@@ -51,7 +52,7 @@ def get_categories():
     :return: The list of video categories
     :rtype: types.GeneratorType
     """
-    return VIDEOS.keys()
+    return VIDEOS.iterkeys()
 
 
 def get_videos(category):
@@ -59,7 +60,7 @@ def get_videos(category):
     Get the list of videofiles/streams.
 
     Here you can insert some parsing code that retrieves
-    the list of video streams in the given category from some site or API.
+    the list of video streams in the given category from some site or server.
 
     .. note:: Consider using `generators functions <https://wiki.python.org/moin/Generators>`_
         instead of returning lists.
