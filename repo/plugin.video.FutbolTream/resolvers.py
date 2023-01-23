@@ -13,6 +13,12 @@ import xbmc, xbmcgui, xbmcaddon, xbmcplugin
 import plugintools
 #import plugintools, unpackerjs, requests, jsunpack, base64, json, wiz, cookielib
 
+#import xbmc
+if sys.version_info[0] < 3:
+    import urllib2
+else:
+    import urllib.error as urllib2
+
 addonName           = xbmcaddon.Addon().getAddonInfo("name")
 addonVersion        = xbmcaddon.Addon().getAddonInfo("version")
 addonId             = xbmcaddon.Addon().getAddonInfo("id")
@@ -23,8 +29,8 @@ from __main__ import *
 #from wiz import *
 
 art = addonPath + "/art/"
-temp = xbmc.translatePath(os.path.join('special://home/userdata/playlists/tmp', ''))
-playlists = xbmc.translatePath(os.path.join('special://home/userdata/playlists', ''))
+temp = plugintools.TrasladaPath(os.path.join('special://home/userdata/playlists/tmp', ''))
+playlists = plugintools.TrasladaPath(os.path.join('special://home/userdata/playlists', ''))
 
 def urlr(url):
     plugintools.log('[%s %s] Probando URLR con... %s' % (addonName, addonVersion, url))

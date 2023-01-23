@@ -23,27 +23,27 @@ addonVersion        = xbmcaddon.Addon().getAddonInfo("version")
 addonId             = xbmcaddon.Addon().getAddonInfo("id")
 addonPath           = xbmcaddon.Addon().getAddonInfo("path")
 
-version="(v2.0.0) Fix 001"
-comparaVersion="2.0.0 Fix 001"
+version="(v3.0.0) Fix 001"
+comparaVersion="3.0.0 Fix 001"
 
 addonPath           = xbmcaddon.Addon().getAddonInfo("path")
-mi_data = xbmc.translatePath(os.path.join('special://home/userdata/addon_data/plugin.video.TorrentsTV/'))
-mi_addon = xbmc.translatePath(os.path.join('special://home/addons/plugin.video.TorrentsTV'))
+mi_data = plugintools.TrasladaPath(os.path.join('special://home/userdata/addon_data/plugin.video.TorrentsTV/'))
+mi_addon = plugintools.TrasladaPath(os.path.join('special://home/addons/plugin.video.TorrentsTV'))
 
-fondo = xbmc.translatePath(os.path.join(mi_addon,'fanart.jpg'))
-logoprin = xbmc.translatePath(os.path.join(mi_addon,'icon.png'))
+fondo = plugintools.TrasladaPath(os.path.join(mi_addon,'fanart.jpg'))
+logoprin = plugintools.TrasladaPath(os.path.join(mi_addon,'icon.png'))
 
-mislogos = xbmc.translatePath(os.path.join('special://home/addons/plugin.video.TorrentsTV/jpg/'))
-logobusca = xbmc.translatePath(os.path.join(mislogos , 'buscar.jpg'))
-logo_volver = xbmc.translatePath(os.path.join(mislogos , 'volver.png'))
-logo_siguiente = xbmc.translatePath(os.path.join(mislogos , 'siguiente.png'))
-logo_finpag = xbmc.translatePath(os.path.join(mislogos , 'final.png'))
-logo_transparente = xbmc.translatePath(os.path.join(mislogos , 'transparente.png'))
-logo_salida = xbmc.translatePath(os.path.join(mislogos , 'salida.png'))
-logo_SD = xbmc.translatePath(os.path.join(mislogos , 'logo_SD.png'))
-logo_HD = xbmc.translatePath(os.path.join(mislogos , 'logo_HD.jpg'))
-logo_4K = xbmc.translatePath(os.path.join(mislogos , 'logo_4K.jpg'))
-logo_Genero = xbmc.translatePath(os.path.join(mislogos , 'generos.jpeg'))
+mislogos = plugintools.TrasladaPath(os.path.join('special://home/addons/plugin.video.TorrentsTV/jpg/'))
+logobusca = plugintools.TrasladaPath(os.path.join(mislogos , 'buscar.jpg'))
+logo_volver = plugintools.TrasladaPath(os.path.join(mislogos , 'volver.png'))
+logo_siguiente = plugintools.TrasladaPath(os.path.join(mislogos , 'siguiente.png'))
+logo_finpag = plugintools.TrasladaPath(os.path.join(mislogos , 'final.png'))
+logo_transparente = plugintools.TrasladaPath(os.path.join(mislogos , 'transparente.png'))
+logo_salida = plugintools.TrasladaPath(os.path.join(mislogos , 'salida.png'))
+logo_SD = plugintools.TrasladaPath(os.path.join(mislogos , 'logo_SD.png'))
+logo_HD = plugintools.TrasladaPath(os.path.join(mislogos , 'logo_HD.jpg'))
+logo_4K = plugintools.TrasladaPath(os.path.join(mislogos , 'logo_4K.jpg'))
+logo_Genero = plugintools.TrasladaPath(os.path.join(mislogos , 'generos.jpeg'))
 
 usaElementum = False
 setting = xbmcaddon.Addon().getSetting
@@ -94,7 +94,7 @@ horus = "eydhY3Rpb24nOiAncGxheScsICdmYW5hcnQnOiAnJywgJ2ljb24nOiAnTUktSUNPTk8nLCA
 if not os.path.exists(mi_data):
 	os.makedirs(mi_data)  # Si no existe el directorio, lo creo
 
-ult_Busca = xbmc.translatePath(os.path.join('special://home/userdata/addon_data/plugin.video.TorrentsTV/ult_Busca.txt'))
+ult_Busca = plugintools.TrasladaPath(os.path.join('special://home/userdata/addon_data/plugin.video.TorrentsTV/ult_Busca.txt'))
 if not os.path.exists(ult_Busca):
     if sys.version_info[0] < 3:
         crear=open(ult_Busca, "w+")

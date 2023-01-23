@@ -53,6 +53,7 @@ import gzip
 import six
 from six.moves import urllib_request
 from six.moves.urllib.parse import unquote_plus, quote_plus, urlencode
+
 module_log_enabled = False
 http_debug_log_enabled = False
 if six.PY3:
@@ -110,6 +111,15 @@ ALL_VIEW_CODES = {
         'skin.re-touched': 550, # Wide
     },
 }
+
+# BadMax Para el problema de kodi-20 que no admite la función xbmc.translatePath()
+def TrasladaPath(elPath):
+    if sys.version_info[0] < 3:
+        return(xbmc.translatePath(elPath))
+    else:
+        import xbmcvfs
+        return(xbmcvfs.translatePath(elPath))
+
 
 # Write something on XBMC log
 def log(message):
@@ -448,7 +458,7 @@ def show_picture(url):
 def get_temp_path():
     _log("get_temp_path")
 
-    dev = xbmc.translatePath( "special://temp/" )
+    dev = xbmcTransPath( "special://temp/" )
     _log("get_temp_path ->'"+str(dev)+"'")
 
     return dev
@@ -456,7 +466,7 @@ def get_temp_path():
 def get_runtime_path():
     _log("get_runtime_path")
 
-    dev = xbmc.translatePath( __settings__.getAddonInfo('Path') )
+    dev = xbmcTransPath( __settings__.getAddonInfo('Path') )
     _log("get_runtime_path ->'"+str(dev)+"'")
 
     return dev
@@ -464,7 +474,7 @@ def get_runtime_path():
 def get_data_path():
     _log("get_data_path")
 
-    dev = xbmc.translatePath( __settings__.getAddonInfo('Profile') )
+    dev = xbmcTransPath( __settings__.getAddonInfo('Profile') )
     
     # Parche para XBMC4XBOX
     if not os.path.exists(dev):

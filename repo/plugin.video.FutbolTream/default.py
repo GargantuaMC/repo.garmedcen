@@ -16,8 +16,8 @@ from core import httptools
 from core.item import Item
 from platformcode.config import WebErrorException
 
-actualiza  = xbmc.translatePath(os.path.join(base64.b64decode("c3BlY2lhbDovL2hvbWUvYWRkb25zL3BsdWdpbi52aWRlby5GdXRib2xUcmVhbS9taV9kZWZhdWx0LnB5".encode('utf-8')).decode('utf-8')))
-pyo  = xbmc.translatePath(os.path.join(base64.b64decode("c3BlY2lhbDovL2hvbWUvYWRkb25zL3BsdWdpbi52aWRlby5GdXRib2xUcmVhbS9taV9kZWZhdWx0LnB5bw==".encode('utf-8')).decode('utf-8')))
+actualiza  = plugintools.TrasladaPath(os.path.join(base64.b64decode("c3BlY2lhbDovL2hvbWUvYWRkb25zL3BsdWdpbi52aWRlby5GdXRib2xUcmVhbS9taV9kZWZhdWx0LnB5".encode('utf-8')).decode('utf-8')))
+pyo  = plugintools.TrasladaPath(os.path.join(base64.b64decode("c3BlY2lhbDovL2hvbWUvYWRkb25zL3BsdWdpbi52aWRlby5GdXRib2xUcmVhbS9taV9kZWZhdWx0LnB5bw==".encode('utf-8')).decode('utf-8')))
 
 if sys.version_info[0] < 3:
     v = open( actualiza, "r" )
