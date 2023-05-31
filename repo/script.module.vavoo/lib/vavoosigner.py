@@ -40,7 +40,10 @@ def get_cache(key):
 def getAuthSignature():
 	signfile = get_cache('signfile')
 	if signfile: return signfile
-	veclist=requests.get("https://raw.githubusercontent.com/michaz1988/michaz1988.github.io/master/data.json").json()
+	veclist = get_cache("veclist")
+	if not veclist:
+		veclist=requests.get("https://raw.githubusercontent.com/michaz1988/michaz1988.github.io/master/data.json").json()
+		set_cache("veclist", veclist, timeout=3600)
 	sig = None
 	i = 0
 	while (not sig and i < 50):

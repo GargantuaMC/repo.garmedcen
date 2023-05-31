@@ -230,7 +230,7 @@
         <forum>https://t.me/KodiManiac
         https://t.me/acestream_spanish</forum>
     </extension>
-</addon><addon id="script.module.vavoo" name="Vavoosign" version="0.1.1" provider-name="michaz1988">
+</addon><addon id="script.module.vavoo" name="Vavoosign" version="0.1.2" provider-name="michaz1988">
 	<requires>
 		<import addon="script.module.requests" />
 	</requires>
