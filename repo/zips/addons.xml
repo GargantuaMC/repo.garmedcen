@@ -60,12 +60,17 @@
       [CR]- Versión inicial 0.0.7
     </news>
   </extension>
-</addon><addon id="plugin.video.vavooto" name="VAVOO.TO" version="5.3" provider-name="michaz">
+</addon><addon id="plugin.video.vavooto" name="VAVOO.TO" version="5.8.6" provider-name="kasi,michaz">
     <requires>
+        <import addon="script.module.vavoo" />
         <import addon="script.module.requests" />
         <import addon="inputstream.ffmpegdirect" optional="true" /> 
+        <import addon="script.module.resolveurl" optional="true" />
+        <import addon="script.module.urlresolver" optional="true" />
+        
+        <import addon="script.module.pydevd" optional="true" />
     </requires>
-    <extension point="xbmc.python.pluginsource" library="lib/main.py">
+    <extension point="xbmc.python.pluginsource" library="main.py">
         <provides>video</provides>
     </extension>
     <extension point="xbmc.addon.metadata">
@@ -206,6 +211,16 @@
         <forum>https://t.me/KodiManiac
         https://t.me/acestream_spanish</forum>
     </extension>
+</addon><addon id="script.module.vavoo" name="Vavoosign" version="0.1.1" provider-name="michaz1988">
+	<requires>
+		<import addon="script.module.requests" />
+	</requires>
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.addon.metadata">
+		<assets>
+			<icon>icon.png</icon>
+		</assets>
+	</extension>
 </addon><addon id="skin.gargantua" version="6.6.2022" name="GargantuaSKIN" provider-name="GargantuaTeam, Confluence Mod">
 	<requires>
 		<import addon="xbmc.gui" version="5.14.0" />
