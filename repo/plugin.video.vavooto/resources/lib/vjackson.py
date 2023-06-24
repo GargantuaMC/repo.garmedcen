@@ -1,22 +1,11 @@
 # -*- coding: utf-8 -*-
-
-# edit 2023-04-04
-import sys, xbmc, os, json, requests, urllib3, xbmcplugin, vavoosigner
+import sys, xbmc, os, json, requests, urllib3, xbmcplugin, vavoosigner, resolveurl, base64
 from resources.lib import utils
-from base64 import b64encode, b64decode 
 from xbmcgui import ListItem, Dialog
-try:
-	from concurrent.futures import ThreadPoolExecutor, as_completed
-	multithread = True
-except: multithread = False
+from concurrent.futures import ThreadPoolExecutor, as_completed
 urllib3.disable_warnings()
 session = requests.session()
 BASEURL = "https://www2.vavoo.to/ccapi/"
-
-try: import resolveurl as resolver
-except:
-	try: import urlresolver as resolver
-	except: resolver = False
 
 try: lines = json.loads(utils.addon.getSetting("favs"))
 except: lines=[]
@@ -47,8 +36,9 @@ def _indexSerie(params):
 
 def createListItem(params):
 	data = utils.get_meta(params)
+	if not data: return
 	infos = data["infos"]
-	if params.get("e"):o = ListItem("S%sxE%s %s" %(params["s"], params["e"], infos["title"]) , infos["title"], offscreen=False)
+	if params.get("e"):o = ListItem("S%sxE%s %s" %(params["s"], params["e"], infos["title"]) , infos["title"])
 	else:o = ListItem(infos["title"])
 	o.setInfo("Video", infos)
 	o.setProperties(data["properties"])
@@ -57,11 +47,13 @@ def createListItem(params):
 	if art.get("thumb"): art["poster"] = art["thumb"]
 	o.setArt(art)
 	o.setCast(data["cast"])
-	o.setUniqueIDs(data["ids"])
+	o.setUniqueIDs(data["ids"], "tmdb")
 	return o
 
 def _list(params):
 	data = cachedcall("list", params)
+	next=data["next"]
+	data = [i for i in data["data"] if i.get("description")]
 	content, isFolder, action = "tvshows", True, "seasons"
 	cat = "Beliebte Serien" if "popular" in params["id"] else "Angesagte Serien"
 	if params["id"].startswith("movie"):
@@ -69,31 +61,21 @@ def _list(params):
 		content, isFolder, action = "movies", False, "get"
 	utils.set_content(content)
 	utils.set_category(cat)
-	if multithread:
-		paramslist=[]
-		for e in data["data"]:
-			paramslist.append({"action": action,"id":e["id"]})
-		with ThreadPoolExecutor(len(paramslist)) as executor:
-			future_to_url = {executor.submit(createListItem, urlparams):urlparams for urlparams in paramslist}
-			for future in as_completed(future_to_url):
-				urlparams = future_to_url[future]
-				o = future.result()
-				if o:
-					if not isFolder: o.addContextMenuItems([("Manuelle Stream Auswahl", "RunPlugin(%s&manual=true)" % utils.url_for(urlparams))])
-					utils.add(urlparams, o, isFolder)
-	else:
-		for e in data["data"]:
-			params["id"] = e["id"]
-			o = createListItem(params)
-			if not isFolder: o.addContextMenuItems([("Manuelle Stream Auswahl", "RunPlugin(%s&manual=true)" % utils.url_for(params))])
-			utils.add(params, o, isFolder)
-	if data["next"]: addDir(">>> Weiter", {"action": "list", "id": data["next"]})
+	paramslist = [{"action": action,"id":e["id"]} for e in data]
+	with ThreadPoolExecutor(len(paramslist)) as executor:
+		future_to_url = {executor.submit(createListItem, urlparams):urlparams for urlparams in paramslist}
+		for future in as_completed(future_to_url):
+			urlparams = future_to_url[future]
+			o = future.result()
+			if o:
+				if not isFolder: o.addContextMenuItems([("Manuelle Stream Auswahl", "RunPlugin(%s&manual=true)" % utils.url_for(urlparams))])
+				utils.add(urlparams, o, isFolder)
+	if next: addDir(">>> Weiter", {"action": "list", "id": next})
 	utils.end()
 
 def _search(params):
-	query = None
-	if params.get("query"): query = params.get("query")
-	else:
+	query = params.get("query")
+	if not query:
 		heading="VAVOO.TO - SERIEN SUCHE" if params["id"].startswith("serie") else "VAVOO.TO - FILM SUCHE"
 		kb = xbmc.Keyboard("", heading, False)
 		kb.doModal()
@@ -114,12 +96,11 @@ def _genres(params):
 		{"genre": "Mystery", "icon":"Mystery"}, {"genre": "Liebesfilm", "icon":"Romance"}, {"genre": "Science Fiction", "icon":"Sci-Fi"}, {"genre": "TV-Film", "icon":"Mini-Series"},
 		{"genre": "Thriller", "icon":"Thriller"}, {"genre": "Kriegsfilm", "icon":"War"}, {"genre": "Western", "icon":"Western"}]
 	genrelist= serie_genrelist if params["id"].startswith("serie") else movie_genrelist
-	for genre in genrelist:
-		addDir2(genre["genre"], genre["icon"], "list", id="%s.genre=%s" % (params["id"], genre))
+	for genre in genrelist: addDir2(genre["genre"], genre["icon"], "list", id="%s.genre=%s" % (params["id"], genre["genre"]))
 	utils.end()
 
 def _seasons(params):
-	utils.set_content("tvshows")
+	utils.set_content("seasons")
 	utils.set_category("Staffeln")
 	seasons = utils.get_meta(params)["seasons"]
 	if len(seasons) == 1:
@@ -158,8 +139,8 @@ def resolve(mirror):
 			response.raise_for_status()
 			return sorted(response.json()["data"], key=lambda x: int(x["label"].replace("p", "")), reverse=True)[0]["file"]
 		except Exception as e: utils.log(e)
-	elif resolver and resolver.relevant_resolvers(utils.urlparse(mirror["url"]).hostname):
-		try: return resolver.resolve(mirror["url"])
+	elif resolveurl.relevant_resolvers(utils.urlparse(mirror["url"]).hostname):
+		try: return resolveurl.resolve(mirror["url"])
 		except Exception as e: utils.log(e)
 	try: return callApi2("open", {"link": mirror["url"]})[-1]["url"]
 	except Exception as e: utils.log(e)
@@ -247,12 +228,11 @@ def addDir2(name_, icon_, action, isFolder=True, **params):
 	addDir(name_, params, iconimage, isFolder)
 
 def cachedcall(action, params):
-	cacheKey = action + "?" + ("&").join([key+ "=" + value for key, value in list(params.items()) ])
-	content = utils.get_cache(cacheKey)
+	content = utils.get_cache(params)
 	if content: return content
 	else:
 		content = callApi2(action, params)
-		utils.set_cache(cacheKey, content, timeout=75600)
+		utils.set_cache(params, content, timeout=75600)
 		return content
 
 def callApi(action, params, method="GET", headers=None, **kwargs):
@@ -278,7 +258,7 @@ def callApi2(action, params):
 			try: resp = session.request(params.get("method", "GET").upper(), data["url"], headers={k:v[0] if type(v) in (list, tuple) else v for k, v in headers.items()} if headers else None, data=body.decode("base64") if body else None, allow_redirects=params.get("redirect", "follow") == "follow")
 			except: return
 			headers = dict(resp.headers)
-			resData = {"status": resp.status_code, "url": resp.url, "headers": headers, "data": b64encode(resp.content).decode("utf-8").replace("\n", "") if data["body"] else None}
+			resData = {"status": resp.status_code, "url": resp.url, "headers": headers, "data": base64.b64encode(resp.content).decode("utf-8").replace("\n", "") if data["body"] else None}
 			utils.log(json.dumps(resData))
 			utils.log(resp.text)
 			res = callApi("res", {"id": res["id"]}, method="POST", json=resData, verify=False)

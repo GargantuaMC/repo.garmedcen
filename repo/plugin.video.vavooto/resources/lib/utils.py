@@ -35,8 +35,7 @@ def set_cache(key, value, timeout=604800):
 	data={"sigValidUntil": int(time.time()) +timeout,"value": value}
 	home.setProperty(path, json.dumps(data))
 	file = os.path.join(cachepath, path)
-	with open(file+".json", "w") as k:
-		json.dump(data, k, indent=4)
+	with open(file+".json", "w") as k: json.dump(data, k, indent=4)
 	
 def get_cache(key):
 	path = convertPluginParams(key)
@@ -49,8 +48,7 @@ def get_cache(key):
 		home.clearProperty(path)
 	try:
 		file = os.path.join(cachepath, path)
-		with open(file+".json") as k:
-			r = json.load(k)
+		with open(file+".json") as k: r = json.load(k)
 		sigValidUntil = r.get('sigValidUntil', 0) 
 		if sigValidUntil > int(time.time()):
 			value = r.get('value')
@@ -59,8 +57,7 @@ def get_cache(key):
 			log("from cache")
 			return value
 		os.remove(file)
-	except:
-		return
+	except: return
 
 def getGenresFromIDs(genresID):
 	tmdb_genres = {12: "Abenteuer", 14: "Fantasy", 16: "Animation", 18: "Drama", 27: "Horror", 28: "Action", 35: "Komödie", 36: "Historie", 37: "Western", 53: "Thriller", 80: "Krimi", 99: "Dokumentarfilm", 878: "Science Fiction", 9648: "Mystery", 10402: "Musik", 10749: "Liebesfilm", 10751: "Familie", 10752: "Kriegsfilm", 10759: "Action & Adventure", 10762: "Kids", 10763: "News", 10764: "Reality", 10765: "Sci-Fi & Fantasy", 10766: "Soap", 10767: "Talk", 10768: "War & Politics", 10770: "TV-Film"}
@@ -77,7 +74,7 @@ def get_meta(param):
 	trailer_url = "plugin://plugin.video.youtube/play/?video_id=%s"
 	lang = "de" #Addon().getSetting("tmdb_lang")
 	api_key = "86dd18b04874d9c94afadde7993d94e3"
-	append_to_response = "credits,similar,videos,recommendations,external_ids,content_ratings,keywords"
+	append_to_response = "credits,videos,external_ids,content_ratings,keywords"
 	if media_type == "movie": append_to_response = append_to_response.replace("content_ratings", "release_dates")
 	poster = "https://image.tmdb.org/t/p/%s" % "w342" #Addon().getSetting("poster_tmdb")
 	fanart = "https://image.tmdb.org/t/p/%s" % "w1280" #Addon().getSetting("backdrop_tmdb")
@@ -94,16 +91,24 @@ def get_meta(param):
 	meta = get_cache({"id": param["id"]})
 	if not meta:
 		meta = requests.get(tmdb_url, params=url_params).json()
+		if "success" in meta and meta["success"] == False: return
 		set_cache({"id": param["id"]}, meta)
 	_seasons = [i for i in meta["seasons"] if i["season_number"] != 0] if meta.get("seasons") else []
+	_ids = {"tmdb": tmdb_id}
 	external_ids = meta.get("external_ids")
-	if external_ids.get("tvdb_id"): _ids = ({"tmdb": meta["id"], "imdb": external_ids["imdb_id"], "tvdb": external_ids["tvdb_id"]}, "tmdb")
-	else: _ids = ({"tmdb": meta["id"], "imdb": external_ids["imdb_id"]}, "tmdb")
+	if external_ids and  external_ids.get("imdb_id"):
+		_ids["imdb"] = external_ids["imdb_id"]
+		setInfo("imdbnumber", external_ids["imdb_id"])
+	if external_ids and  external_ids.get("tvdb_id"): _ids["tvdb"] = external_ids["tvdb_id"]
 	setproperties("homepage", meta.get("homepage"))
 	setInfo("title", meta.get("title", meta.get("name")))
 	setInfo("tvshowtitle", meta.get("name"))
 	setInfo("rating", meta.get("vote_average"))
 	setInfo("votes", meta.get("vote_count"))
+	belongs_to_collection = meta.get("belongs_to_collection")
+	if belongs_to_collection:
+		setInfo("setid", belongs_to_collection.get("id"))
+		setInfo("set", belongs_to_collection.get("name"))
 	setInfo("duration", meta.get("runtime", 0)*60)
 	setInfo("originaltitle", meta.get("originalName", meta.get("original_title", meta.get("original_name"))))
 	if meta.get("genres"): setInfo("genre", [i["name"] for i in meta["genres"]])
@@ -113,11 +118,11 @@ def get_meta(param):
 	if len(_meta.get("premiered", "0")) == 10: _meta["year"] = int(_meta["premiered"][:4])
 	setInfo("status", meta.get("status"))
 	setInfo("tagline", meta.get("tagline"))
-	keywords = meta.get("keywords")
-	tags = keywords.get("results", keywords.get("keywords"))
-	setInfo("tag", [i["name"] for i in tags])
+	keywords = meta.get("keywords", {})
+	tags = keywords.get("results", keywords.get("keywords",{}))
+	if tags: setInfo("tag", [i["name"] for i in tags])
 	results = meta.get("release_dates", meta.get("content_ratings", {})).get("results")
-	results = [i for i in results if i["iso_3166_1"] == "DE"]
+	results = [i for i in results if i["iso_3166_1"] == "DE"] if results else []
 	if results:
 		for release in results:
 			if release["iso_3166_1"] == "DE":
@@ -127,8 +132,8 @@ def get_meta(param):
 						if release_date["type"] == 3: setInfo("mpaa", release_date.get("certification"))
 	if meta.get("backdrop_path"): _art["banner"] = fanart + meta["backdrop_path"]
 	if meta.get("poster_path"): _art["poster"] = poster + meta["poster_path"]
-	setproperties("Budget", '${:,}'.format(meta.get('budget', 0)))
-	setproperties("Revenue", '${:,}'.format(meta.get('revenue', 0)))
+	if meta.get('budget') and meta['budget'] !=0: setproperties("Budget", '${:,}'.format(meta['budget']))
+	if meta.get('revenue') and meta['revenue'] !=0: setproperties("Revenue", '${:,}'.format(meta['revenue']))
 	setproperties("TotalSeasons", meta.get("number_of_seasons"))
 	setproperties("TotalEpisodes", meta.get("number_of_episodes"))
 	if meta.get("production_countries"): _meta["country"] = [i["name"] for i in meta["production_countries"]]
@@ -146,8 +151,9 @@ def get_meta(param):
 		_meta["title"] = season["name"]
 		setInfo("plot", season.get("overview"))
 		_meta["sortepisode"] = season["episode_count"]
+		setproperties("TotalEpisodes", season["episode_count"])
 		setInfo("aired", season.get("air_date"))
-		if len(_meta.get("aired", "0")) == 10: _meta["year"] = int(_meta["aired"][:4])
+		if _meta.get("aired")  and len(_meta["aired"]) == 10: _meta["year"] = int(_meta["aired"][:4])
 		if season.get("poster_path"): _art["poster"] = poster + season["poster_path"]
 	if param.get("s") and param.get("e"):
 		_meta["mediatype"] = "episode"
@@ -164,9 +170,9 @@ def get_meta(param):
 		_meta["aired"] = episode.get("air_date")
 		setInfo("rating", episode.get("vote_average"))
 		setInfo("votes", episode.get("vote_count"))
-		if len(_meta.get("aired", "0")) == 10: _meta["year"] = int(_meta["aired"][:4])
+		if _meta.get("aired")  and len(_meta["aired"]) == 10: _meta["year"] = int(_meta["aired"][:4])
 		setInfo("code", episode.get("production_code"))
-		_meta["duration"] = (episode.get("runtime") or 0)*60
+		if episode.get("runtime"): _meta["duration"] = episode["runtime"]*60
 		if episode.get("still_path"): _art["thumb"] = poster + episode["still_path"]
 		if episode.get("crew"):
 			for crew in episode["crew"]:
@@ -189,8 +195,9 @@ def get_meta(param):
 			_meta["director"].append(i["name"])
 	if casts:
 		for a in casts:
-			if a.get("profile_path"): _cast.append({"name":a["name"], "role":a["character"], "thumbnail": poster + a["profile_path"], "order": a["order"]})
-			else: _cast.append({"name":a["name"], "role":a["character"], "order": a["order"]})
+			cast = {"name":a["name"], "role":a["character"], "order": a["order"]}
+			if a.get("profile_path"): cast["thumbnail"] = poster + a["profile_path"]
+			_cast.append(cast)
 	return {"infos":_meta, "art":_art, "properties":_property, "cast":_cast, "ids":_ids, "seasons":_seasons, "episodes":_episodes}
 
 def log(*args):
