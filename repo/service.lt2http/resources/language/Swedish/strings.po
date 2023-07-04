@@ -1,0 +1,919 @@
+# Kodi Media Center language file
+# Addon Name: Elementum
+# Addon id: plugin.video.elementum
+# Addon Provider: elgatito
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-01-27 19:53+0200\n"
+"PO-Revision-Date: 2021-03-11 12:31+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.4.2\n"
+
+# Settings
+msgctxt "#30000"
+msgid "General"
+msgstr "Allmänt"
+
+msgctxt "#30001"
+msgid "Download path"
+msgstr "Hämtningssökväg"
+
+msgctxt "#30004"
+msgid "Max upload rate (kB/s)"
+msgstr "Max sändningshastighet (kB/s)"
+
+msgctxt "#30005"
+msgid "Max download rate (kB/s)"
+msgstr "Max hämtningshastighet (kB/s)"
+
+msgctxt "#30006"
+msgid "Listen port min"
+msgstr "Lyssningsport min"
+
+msgctxt "#30007"
+msgid "Listen port max"
+msgstr "Lyssningsport max"
+
+msgctxt "#30008"
+msgid "Proxy"
+msgstr "Proxy"
+
+msgctxt "#30010"
+msgid "Enabled"
+msgstr "Aktiverad"
+
+msgctxt "#30011"
+msgid "Host"
+msgstr "Värd"
+
+msgctxt "#30012"
+msgid "Port"
+msgstr "Port"
+
+msgctxt "#30013"
+msgid "Login"
+msgstr "Logga in"
+
+msgctxt "#30014"
+msgid "Password"
+msgstr "Lösenord"
+
+msgctxt "#30015"
+msgid "Advanced"
+msgstr "Avancerat"
+
+msgctxt "#30017"
+msgid "Enabled (use at your own risk)"
+msgstr "Aktiverad (använd på egen risk)"
+
+msgctxt "#30025"
+msgid "Limit rates after initial buffering only"
+msgstr "Begränsa hastigheter endast efter initial buffring"
+
+msgctxt "#30027"
+msgid "Connections limit"
+msgstr "Anslutningsgräns"
+
+msgctxt "#30028"
+msgid "Download after play was stopped"
+msgstr "Hämtning efter uppspelning stoppades"
+
+msgctxt "#30029"
+msgid "Session saving frequency (seconds)"
+msgstr "Sessionsbesparingsfrekvens (sekunder)"
+
+msgctxt "#30033"
+msgid "Appearance"
+msgstr "Utseende"
+
+msgctxt "#30034"
+msgid "Default view for Movies"
+msgstr "Standardvy för filmer"
+
+msgctxt "#30042"
+msgid "Sorting mode for Movies"
+msgstr "Sorteringsläge för filmer"
+
+msgctxt "#30044"
+msgid "By seeders"
+msgstr "Efter distributörer"
+
+msgctxt "#30046"
+msgid "Balanced"
+msgstr "Balanserad"
+
+msgctxt "#30050"
+msgid "Disable DHT"
+msgstr "Inaktivera DHT"
+
+msgctxt "#30051"
+msgid "Share ratio limit (percent)"
+msgstr "Gräns för delningskvot (procent)"
+
+msgctxt "#30052"
+msgid "Seed time ratio limit (percent)"
+msgstr "Kvotgräns för distributionstid (procent)"
+
+msgctxt "#30053"
+msgid "Seed time limit (hours)"
+msgstr "Distributionstidsgräns (timmar)"
+
+msgctxt "#30054"
+msgid "Update library"
+msgstr "Uppdatera bibliotek"
+
+msgctxt "#30063"
+msgid "Disable UPNP & NATPMP"
+msgstr "Inaktivera UPNP & NATPMP"
+
+msgctxt "#30064"
+msgid "Encryption policy"
+msgstr "Krypteringspolicy"
+
+msgctxt "#30065"
+msgid "Disabled"
+msgstr "Inaktiverad"
+
+msgctxt "#30066"
+msgid "Forced"
+msgstr "Tvingade"
+
+msgctxt "#30067"
+msgid "Proxy type"
+msgstr "Proxytyp"
+
+msgctxt "#30068"
+msgid "SOCKS4"
+msgstr "SOCKS4"
+
+msgctxt "#30069"
+msgid "SOCKS5"
+msgstr "SOCKS5"
+
+msgctxt "#30071"
+msgid "HTTP"
+msgstr "HTTP"
+
+msgctxt "#30073"
+msgid "i2p"
+msgstr "i2p"
+
+msgctxt "#30074"
+msgid "Spoof user agent (highly inadvisable)"
+msgstr "Maskera användaragent (starkt orekommenderat)"
+
+msgctxt "#30075"
+msgid "Default advisable (acceptable)"
+msgstr "Standard rekommenderas (acceptabelt)"
+
+msgctxt "#30076"
+msgid "libtorrent (Rasterbar) 1.1.0"
+msgstr "libtorrent (Rasterbar) 1.1.0"
+
+msgctxt "#30077"
+msgid "BitTorrent 7.5.0"
+msgstr "BitTorrent 7.5.0"
+
+msgctxt "#30078"
+msgid "BitTorrent 7.4.3"
+msgstr "BitTorrent 7.4.3"
+
+msgctxt "#30079"
+msgid "µTorrent 3.4.9"
+msgstr "µTorrent 3.4.9"
+
+msgctxt "#30080"
+msgid "µTorrent 3.2.0"
+msgstr "µTorrent 3.2.0"
+
+msgctxt "#30081"
+msgid "µTorrent 2.2.1"
+msgstr "µTorrent 2.2.1"
+
+msgctxt "#30082"
+msgid "Transmission 2.92"
+msgstr "Transmission 2.92"
+
+msgctxt "#30083"
+msgid "Deluge 1.3.6.0"
+msgstr "Deluge 1.3.6.0"
+
+msgctxt "#30084"
+msgid "Deluge 1.3.12.0"
+msgstr "Deluge 1.3.12.0"
+
+msgctxt "#30085"
+msgid "Vuze 5.7.3.0"
+msgstr "Vuze 5.7.3.0"
+
+msgctxt "#30086"
+msgid "Enable tuned storage settings"
+msgstr "Aktivera inställda lagringsinställningar"
+
+msgctxt "#30088"
+msgid "Initial buffering timeout (seconds)"
+msgstr "Tidsgräns för initial buffring (sekunder)"
+
+msgctxt "#30090"
+msgid "Listen interfaces"
+msgstr "Lyssningsgränssnitt"
+
+msgctxt "#30091"
+msgid "Outgoing interfaces"
+msgstr "Utgående gränssnitt"
+
+msgctxt "#30092"
+msgid "Use default fanart"
+msgstr "Använd standard fanart"
+
+msgctxt "#30093"
+msgid "Disable notification sound"
+msgstr "Inaktivera aviseringsljud"
+
+# Interface
+msgctxt "#30100"
+msgid "lt2http has crashed, restarting..."
+msgstr ""
+
+msgctxt "#30102"
+msgid "This add-on can only be run from within lt2http"
+msgstr ""
+
+msgctxt "#30103"
+msgid "Unable to find lt2http binary[CR]Required platform:"
+msgstr ""
+
+msgctxt "#30106"
+msgid "File"
+msgstr "Fil"
+
+msgctxt "#30107"
+msgid "Insert URL"
+msgstr "Infoga webbadress"
+
+msgctxt "#30110"
+msgid "Crashed too many times, aborting..."
+msgstr "Kraschade för många gånger, avbryter..."
+
+msgctxt "#30143"
+msgid "Default view for menus in TV Shows"
+msgstr "Standardvy för menyer i TV-serier"
+
+msgctxt "#30144"
+msgid "Default view for movie genres"
+msgstr "Standardvy för filmgenrer"
+
+msgctxt "#30149"
+msgid "Trakt username not set, check your settings"
+msgstr "Trakt-användarnamn har inte ställts in, kontrollera dina inställningar"
+
+msgctxt "#30199"
+msgid "No available JSON-RPC connection to Kodi.[CR]Enable both Application control options in Service settings / Control and restart Kodi."
+msgstr "Ingen tillgänglig JSON-RPC-anslutning till Kodi.[CR]Aktivera båda programstyrningsalternativen i tjänstinställningar/kontroll och starta om Kodi."
+
+# Elementum daemon
+msgctxt "#30200"
+msgid "Cache cleared"
+msgstr "Cache rensad"
+
+msgctxt "#30202"
+msgid "Choose stream..."
+msgstr "Välj ström..."
+
+msgctxt "#30203"
+msgid "Show information"
+msgstr "Visa information"
+
+msgctxt "#30205"
+msgid "No links were found"
+msgstr "Inga länkar hittades"
+
+msgctxt "#30206"
+msgid "Search Movies"
+msgstr "Sök filmer"
+
+msgctxt "#30211"
+msgid "Top Rated"
+msgstr "Topprankade"
+
+msgctxt "#30226"
+msgid "Daemon error"
+msgstr "Demon-fel"
+
+msgctxt "#30234"
+msgid "Resume session"
+msgstr "Återuppta session"
+
+msgctxt "#30235"
+msgid "Resume torrent"
+msgstr "Återuppta torrent"
+
+msgctxt "#30241"
+msgid "Disable"
+msgstr "Inaktivera"
+
+msgctxt "#30246"
+msgid "Trending"
+msgstr "Trender"
+
+msgctxt "#30252"
+msgid "Add to library"
+msgstr "Lägg till i biblioteket"
+
+msgctxt "#30258"
+msgid "Add to collection"
+msgstr "Lägga till i samlingen"
+
+msgctxt "#30276"
+msgid "Delete torrent and files"
+msgstr "Ta bort torrent och filer"
+
+msgctxt "#30277"
+msgid "%s added to library, do you want to rescan it?[CR]You can later use Kodi's 'Update library' feature instead."
+msgstr "%s läggs till i biblioteket, vill du skanna det igen?[CR]Du kan senare använda Kodis \"Uppdatera bibliotek\"-funktion istället."
+
+msgctxt "#30283"
+msgid "Merge to library"
+msgstr "Sammanfoga till bibliotek"
+
+msgctxt "#30298"
+msgid "All Shows"
+msgstr "Alla serier"
+
+msgctxt "#30301"
+msgid "Move finished downloads to separate folders"
+msgstr "Flytta slutförda hämtningar till separata mappar"
+
+msgctxt "#30303"
+msgid "RAR archive detected. Download will need to be completed before playback can start and will require around twice the amount of space, continue?"
+msgstr "RAR-arkiv upptäckt. Hämtningen måste slutföras innan uppspelningen kan starta och kommer att kräva ungefär dubbelt så mycket utrymme, fortsätt?"
+
+msgctxt "#30315"
+msgid "Download storage type"
+msgstr "Hämta lagringstyp"
+
+msgctxt "#30316"
+msgid "Use files"
+msgstr "Använd filer"
+
+msgctxt "#30317"
+msgid "Use memory"
+msgstr "Använd minne"
+
+msgctxt "#30318"
+msgid "Memory size to use for each torrent (Mb)"
+msgstr "Minnesstorlek som ska användas för varje torrent (Mb)"
+
+msgctxt "#30324"
+msgid "Force stream auto-selection from settings"
+msgstr "Tvinga automatiskt urval från inställningar"
+
+msgctxt "#30326"
+msgid "Kodi library"
+msgstr "Kodi-bibliotek"
+
+msgctxt "#30327"
+msgid "Storage"
+msgstr "Lagring"
+
+msgctxt "#30328"
+msgid "Disable TCP"
+msgstr "Inaktivera TCP"
+
+msgctxt "#30329"
+msgid "Disable UTP"
+msgstr "Inaktivera UTP"
+
+msgctxt "#30332"
+msgid "Reloading configuration..."
+msgstr "Läser om konfiguration..."
+
+msgctxt "#30347"
+msgid "Could not find binary for architecture '%s'![CR]Try to uninstall this addon, re-download and re-install it from the biggest zip."
+msgstr "Kunde inte hitta binär för arkitekturen \"%s\"![CR]Försök att avinstallera det här tillägget, hämta det igen och installera om det från den största zip-filen."
+
+msgctxt "#30348"
+msgid "Create usual files on the file system and write to them.[CR]Needs selected file's full size to be available on the disk!"
+msgstr "Skapa vanliga filer på filsystemet och skriv till dem.[CR]Kräver att den valda filens fulla storlek är tillgänglig på disken!"
+
+msgctxt "#30349"
+msgid "Using device's memory to download parts of the torrent.[CR]Disk is used only to download and save .torrent file,"
+msgstr "Använda enhetens minne för att hämta delar av torrenten.[CR]Disken används endast för att hämta och spara .torrent-fil,"
+
+msgctxt "#30350"
+msgid "so can be any storage. For 1gb memory devices[CR]100mb is enough for memory storage, 200-250mb for bigger devices."
+msgstr "så kan alla lagringsplatser vara. För 1 GB minnesenheter[CR]räcker 100 MB för minneslagring, 200-250 MB för större enheter."
+
+msgctxt "#30351"
+msgid "Same as for usual file storage, but splits file into many small files.[CR]Should be used on FAT-32 file-systems."
+msgstr "Samma som för vanlig fillagring, men delar upp filen i många små filer.[CR]Bör användas på FAT-32 filsystem."
+
+msgctxt "#30352"
+msgid "Same as for usual file storage, but using memory[CR]to lower filesystem operations. Experimental storage!"
+msgstr "Samma som för vanligt fillagring, men med minne[CR]för att sänka filsystemets funktioner. Experimentell lagring!"
+
+msgctxt "#30367"
+msgid "Sync back Kodi watched states into Trakt"
+msgstr "Synkronisera tillbaka Kodi sedda-tillstånd till Trakt"
+
+msgctxt "#30369"
+msgid "Disable Upload"
+msgstr "Inaktivera sändning"
+
+msgctxt "#30370"
+msgid "Auto-assign network IP"
+msgstr "Tilldela nätverkets IP automatiskt"
+
+msgctxt "#30371"
+msgid "Auto-assign network ports"
+msgstr "Tilldela nätverksportar automatiskt"
+
+msgctxt "#30373"
+msgid "Languages"
+msgstr "Språk"
+
+msgctxt "#30374"
+msgid "Countries"
+msgstr "Länder"
+
+msgctxt "#30376"
+msgid "Choose memory size automatically"
+msgstr "Välj minnesstorlek automatiskt"
+
+msgctxt "#30377"
+msgid "Size is chosen automatically, based on[CR]physical amount of memory"
+msgstr "Storleken väljs automatiskt baserat på[CR]fysiskt minne"
+
+msgctxt "#30378"
+msgid "Allow memory usage"
+msgstr "Tillåt minnesanvändning"
+
+msgctxt "#30379"
+msgid "Minimum - 40MB, Default - 8%, Maximum - 15%"
+msgstr "Minimum - 40 MB, Standard - 8%, maximalt - 15%"
+
+msgctxt "#30380"
+msgid "Minimum"
+msgstr "Minimum"
+
+msgctxt "#30381"
+msgid "Default"
+msgstr "Standard"
+
+msgctxt "#30382"
+msgid "Maximum"
+msgstr "Maximalt"
+
+msgctxt "#30383"
+msgid "Use Kodi language for subtitles search"
+msgstr "Använd Kodi-språket för sökning av undertexter"
+
+msgctxt "#30395"
+msgid "IP address"
+msgstr "IP-adress"
+
+msgctxt "#30396"
+msgid "Port"
+msgstr "Port"
+
+msgctxt "#30400"
+msgid "Statistics"
+msgstr "Statistik"
+
+msgctxt "#30402"
+msgid "Size of cache.db"
+msgstr "Storleken på cache.db"
+
+msgctxt "#30406"
+msgid "Remove from history"
+msgstr "Ta bort från historiken"
+
+msgctxt "#30408"
+msgid "Plugin Connectivity"
+msgstr "Tilläggsanslutning"
+
+msgctxt "#30409"
+msgid "Local port"
+msgstr "Lokal port"
+
+msgctxt "#30410"
+msgid "Remote port"
+msgstr "Fjärrport"
+
+msgctxt "#30411"
+msgid "Remote host"
+msgstr "Fjärrvärd"
+
+msgctxt "#30416"
+msgid "Percents of playback to mark as watched"
+msgstr "Procent av uppspelning för att markera som sedda"
+
+msgctxt "#30421"
+msgid "Load torrents from torrents folder on startup"
+msgstr "Läs in torrenter från torrentmappen vid start"
+
+msgctxt "#30431"
+msgid "By show name"
+msgstr "Efter serienamn"
+
+msgctxt "#30432"
+msgid "By air date (newer)"
+msgstr "Efter utgivningsdatum (aldrig)"
+
+msgctxt "#30433"
+msgid "By air date (older)"
+msgstr "Efter utgivningsdatum (äldre)"
+
+msgctxt "#30434"
+msgid "Date format"
+msgstr "Datumformat"
+
+msgctxt "#30444"
+msgid "Select userlist for shows"
+msgstr "Välj användarlista för serier"
+
+msgctxt "#30446"
+msgid "Selected userlist for shows"
+msgstr "Vald användarlista för serier"
+
+msgctxt "#30448"
+msgid "Add to Trakt, when show is added to Kodi library"
+msgstr "Lägg till i Trakt när serie läggs till i Kodi-biblioteket"
+
+msgctxt "#30451"
+msgid "Torrent files path"
+msgstr "Torrent-filsökväg"
+
+msgctxt "#30452"
+msgid "Reset all paths"
+msgstr "Återställ alla sökvägar"
+
+msgctxt "#30454"
+msgid "Paste url:[CR]%s"
+msgstr "Klistra in webbadress:[CR]%s"
+
+msgctxt "#30464"
+msgid "Clear torrents history"
+msgstr "Rensa torrenthistorik"
+
+msgctxt "#30471"
+msgid "Are you sure you want to do it?"
+msgstr "Är du säker på att du vill göra det?"
+
+msgctxt "#30480"
+msgid "Run Kodi library update after add/delete"
+msgstr "Kör Kodi-biblioteksuppdatering efter tilläggning/borttagning"
+
+msgctxt "#30485"
+msgid "Concurrent connections limit"
+msgstr "Samtidiga gränser för anslutningar"
+
+msgctxt "#30486"
+msgid "Automatic concurrent connections limit"
+msgstr "Automatiska gränser för samtidiga anslutningar"
+
+msgctxt "#30488"
+msgid "Internal Proxy Port"
+msgstr "Intern proxyport"
+
+msgctxt "#30489"
+msgid "Log Internal proxy requests"
+msgstr "Logga in interna proxyförfrågningar"
+
+msgctxt "#30490"
+msgid "Internal HTTP proxy"
+msgstr "Intern HTTP-proxy"
+
+msgctxt "#30492"
+msgid "Use Proxy for downloading .torrent files"
+msgstr "Använd proxy för att hämta .torrent-filer"
+
+msgctxt "#30493"
+msgid "Use Proxy for trackers"
+msgstr "Använd proxy för bevakare"
+
+msgctxt "#30494"
+msgid "Use Proxy for torrent downloading"
+msgstr "Använd proxy för hämtning av torrent"
+
+msgctxt "#30499"
+msgid "Automatically adjust memory size[CR]for heavy torrents, if possible"
+msgstr "Justera automatiskt minnesstorlek[CR]för tunga strömmar, om möjligt"
+
+msgctxt "#30500"
+msgid "Automatically adjust buffer size[CR]for heavy torrents"
+msgstr "Justera automatiskt buffertstorlek[CR]för tunga torrents"
+
+msgctxt "#30502"
+msgid "Adjust buffer according to Kodi advancedsettings, if set"
+msgstr "Justera bufferten enligt Kodis avancerade inställningar, om den är inställd"
+
+msgctxt "#30503"
+msgid "Use libtorrent.config to override torrent engine settings"
+msgstr "Använd libtorrent.config för att åsidosätta inställningar för torrentmotor"
+
+msgctxt "#30504"
+msgid "Located at USERDATA/service.lt2http/libtorrent.config file[CR]Settings apply automatically. Visit https://libtorrent.org for info."
+msgstr ""
+
+msgctxt "#30506"
+msgid "Enable libtorrent logging"
+msgstr "Aktivera libtorrent-loggning"
+
+msgctxt "#30507"
+msgid "Magnet trackers"
+msgstr "Magnet-bevakare"
+
+msgctxt "#30508"
+msgid "Leave as is"
+msgstr "Låt det vara"
+
+msgctxt "#30509"
+msgid "Remove all"
+msgstr "Ta bort alla"
+
+msgctxt "#30510"
+msgid "Add retrackers"
+msgstr "Lägg till återbevakare"
+
+msgctxt "#30511"
+msgid "Libtorrent settings profile"
+msgstr "Libtorrent-inställningsprofil"
+
+msgctxt "#30512"
+msgid "Default"
+msgstr "Standard"
+
+msgctxt "#30513"
+msgid "Minimal memory"
+msgstr "Minimalt minne"
+
+msgctxt "#30514"
+msgid "High speed"
+msgstr "Hög hastighet"
+
+msgctxt "#30515"
+msgid "Load torrents from torrents folder paused"
+msgstr "Läs in torrenter från torrentmappen pausad"
+
+msgctxt "#30516"
+msgid "... resume N seconds earlier"
+msgstr "... återuppta N sekunder tidigare"
+
+msgctxt "#30518"
+msgid "Use libtorrent deadlines"
+msgstr "Använd tidsfrister för libtorrent"
+
+msgctxt "#30519"
+msgid "Use libtorrent pause/resume trick for added torrents"
+msgstr "Använd libtorrent-trick för att pausa/återuppta för tillagda torrenter"
+
+msgctxt "#30523"
+msgid "Minimum file size for Movies, MB"
+msgstr "Minimum filstorlek för filmer, MB"
+
+msgctxt "#30528"
+msgid "Automatically load first found subtitles"
+msgstr "Läs automatiskt in först hittade undertexter"
+
+msgctxt "#30540"
+msgid "Subtitles"
+msgstr "Undertexter"
+
+msgctxt "#30544"
+msgid "Automatic Scrape"
+msgstr "Automatisk skrapning"
+
+msgctxt "#30545"
+msgid "Automatic scraping allows to scrape connected providers[CR]to find new movies, if there are results,"
+msgstr "Automatisk skrapning gör det möjligt att skrapa anslutna leverantörer[CR]för att hitta nya filmer, om det finns resultat,"
+
+msgctxt "#30551"
+msgid "How to search"
+msgstr "Hur man söker"
+
+msgctxt "#30558"
+msgid "Latest available movies"
+msgstr "Senaste tillgängliga filmer"
+
+msgctxt "#30560"
+msgid "Files: %s"
+msgstr "Filer: %s"
+
+msgctxt "#30563"
+msgid "Synchronize frequency of Trakt (minutes)"
+msgstr "Synkronisera frekvensen för Trakt (minuter)"
+
+msgctxt "#30570"
+msgid "Descending"
+msgstr "Fallande"
+
+msgctxt "#30577"
+msgid "End of file Buffer size (MB)"
+msgstr "Slut på filbuffertstorlek (MB)"
+
+msgctxt "#30578"
+msgid "Beginning of file Buffer size (MB)"
+msgstr "Början av filbuffertstorlek (MB)"
+
+msgctxt "#30581"
+msgid "Custom Trakt API Client Secret"
+msgstr "Anpassad Trakt API-klienthemlighet"
+
+msgctxt "#30582"
+msgid "Settings for %s provider"
+msgstr "Inställningar för %s-leverantör"
+
+msgctxt "#30583"
+msgid "Resolving magnet link"
+msgstr "Löser magnetlänken"
+
+msgctxt "#30585"
+msgid "Enable library integration with Kodi"
+msgstr "Aktivera biblioteksintegration med Kodi"
+
+msgctxt "#30586"
+msgid "If disabled - lt2http will not get/insert items[CR]to Kodi library and skip[CR]watched management with Kodi."
+msgstr ""
+
+msgctxt "#30587"
+msgid "Show welcome message on start"
+msgstr "Visa välkomstmeddelande vid start"
+
+msgctxt "#30588"
+msgid "Pre-Play Buffering"
+msgstr "Förspelningsbuffring"
+
+msgctxt "#30589"
+msgid "Speed limiting"
+msgstr "Hastighetsbegränsning"
+
+msgctxt "#30590"
+msgid "Torrents autoload on plugin startup"
+msgstr "Torrenter läses in automatiskt vid tilläggsstart"
+
+msgctxt "#30591"
+msgid "Connection limits"
+msgstr "Anslutningsgränser"
+
+msgctxt "#30592"
+msgid "Seeding"
+msgstr "Distribuerar"
+
+msgctxt "#30593"
+msgid "Seed forever (unless disk space needed)"
+msgstr "Distribuera för alltid (såvida inte diskutrymme behövs)"
+
+msgctxt "#30594"
+msgid "Network"
+msgstr "Nätverk"
+
+msgctxt "#30595"
+msgid "Miscellaneous"
+msgstr "Diverse"
+
+msgctxt "#30597"
+msgid "Cache size (MB)"
+msgstr "Cachestorlek (MB)"
+
+msgctxt "#30598"
+msgid "Enable caching if using File storage and have speed problems.[CR]Will use more memory, but can improve the speed."
+msgstr "Aktivera cachning om du använder fillagring och har hastighetsproblem.[CR]Kommer att använda mer minne men kan förbättra hastigheten."
+
+msgctxt "#30603"
+msgid "Addon Startup"
+msgstr "Tilläggsstart"
+
+msgctxt "#30609"
+msgid "Automatically start next episode if available"
+msgstr "Starta nästa avsnitt automatiskt om tillgängligt"
+
+msgctxt "#30610"
+msgid "Magnet resolve timeout (seconds)"
+msgstr "Tidsgräns för magnetlösning (sekunder)"
+
+msgctxt "#30611"
+msgid "Application platform type"
+msgstr "Programplattformstyp"
+
+msgctxt "#30613"
+msgid "... for movie"
+msgstr "... för film"
+
+msgctxt "#30619"
+msgid "Return to [B]%s[/B]"
+msgstr "Återgå till [B]%s[/B]"
+
+msgctxt "#30620"
+msgid "Restart lt2http addon"
+msgstr ""
+
+msgctxt "#30622"
+msgid "Checking"
+msgstr "Kontrollerar"
+
+msgctxt "#30634"
+msgid "Log level"
+msgstr "Loggnivå"
+
+msgctxt "#30639"
+msgid "Show Specials in season listings"
+msgstr "Visa specialer i säsongsförteckningar"
+
+msgctxt "#30653"
+msgid "Which files to download"
+msgstr "Vilka filer som ska hämtas"
+
+msgctxt "#30654"
+msgid "Only playback file"
+msgstr "Endast uppspelningsfil"
+
+msgctxt "#30655"
+msgid "Season files"
+msgstr "Säsongsfiler"
+
+msgctxt "#30656"
+msgid "All files"
+msgstr "Alla filer"
+
+msgctxt "#30657"
+msgid "Disable LSD"
+msgstr ""
+
+msgctxt "#30658"
+msgid "Add extra trackers"
+msgstr ""
+
+msgctxt "#30659"
+msgid "All known trackers"
+msgstr ""
+
+msgctxt "#30660"
+msgid "Best trackers"
+msgstr ""
+
+msgctxt "#30661"
+msgid "Minimum set"
+msgstr ""
+
+msgctxt "#30662"
+msgid "Remove original trackers from torrent"
+msgstr ""
+
+msgctxt "#30664"
+msgid "Modify trackers in torrent"
+msgstr ""
+
+msgctxt "#30665"
+msgid "At the time of adding"
+msgstr ""
+
+msgctxt "#30666"
+msgid "Every time"
+msgstr ""
+
+msgctxt "#30667"
+msgid "Downloading required binary file for '%s'"
+msgstr ""
+
+msgctxt "#30668"
+msgid "Authentication Login"
+msgstr ""
+
+msgctxt "#30669"
+msgid "Authentication Password"
+msgstr ""
+
+# Interface
+#~ msgctxt "#30100"
+#~ msgid "Elementum has crashed, restarting..."
+#~ msgstr "Elementum har kraschat, startar om..."
+
+#~ msgctxt "#30102"
+#~ msgid "This add-on can only be run from within Elementum"
+#~ msgstr "Det här tillägget kan bara köras från Elementum"
+
+#~ msgctxt "#30103"
+#~ msgid "Unable to find Elementum binary[CR]Required platform:"
+#~ msgstr "Det gick inte att hitta Elementum-binär[CR]Nödvändig plattform:"
+
+#~ msgctxt "#30504"
+#~ msgid "Located at USERDATA/plugin.video.elementum/libtorrent.config file[CR]Settings apply automatically. Visit https://libtorrent.org for info."
+#~ msgstr "Beläget vid USERDATA/plugin.video.elementum/libtorrent.config-fil[CR]Inställningarna tillämpas automatiskt. Besök https://libtorrent.org för information."
+
+#~ msgctxt "#30586"
+#~ msgid "If disabled - Elementum will not get/insert items[CR]to Kodi library and skip[CR]watched management with Kodi."
+#~ msgstr "Om inaktiverad - Elementum kommer inte att hämta/infoga objekt[CR]till Kodi-biblioteket och hoppa över[CR]sett-hantering med Kodi."
+
+#~ msgctxt "#30620"
+#~ msgid "Restart Elementum addon"
+#~ msgstr "Starta om Elementum-tillägget"
