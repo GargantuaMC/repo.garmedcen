@@ -60,7 +60,7 @@
       [CR]- Versión inicial 0.0.7
     </news>
   </extension>
-</addon><addon id="plugin.video.vavooto" name="VAVOO.TO" version="5.9.3.4" provider-name="kasi,michaz">
+</addon><addon id="plugin.video.vavooto" name="VAVOO.TO" version="5.9.3.6" provider-name="kasi,michaz">
 	<requires>
 		<import addon="script.module.vavoo" />
 		<import addon="script.module.requests" />

@@ -35,7 +35,9 @@ def set_cache(key, value, timeout=604800):
 	data={"sigValidUntil": int(time.time()) +timeout,"value": value}
 	home.setProperty(path, json.dumps(data))
 	file = os.path.join(cachepath, path)
-	with open(file+".json", "w") as k: json.dump(data, k, indent=4)
+	k = open(file+".json", "w") if PY2 else xbmcvfs.File(file+".json", "w")
+	json.dump(data, k, indent=4)
+	k.close()
 	
 def get_cache(key):
 	path = convertPluginParams(key)

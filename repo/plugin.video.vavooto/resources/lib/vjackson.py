@@ -2,11 +2,11 @@
 import sys, xbmc, os, json, requests, urllib3, xbmcplugin, vavoosigner, resolveurl, base64
 from resources.lib import utils
 from xbmcgui import ListItem, Dialog
-from concurrent.futures import ThreadPoolExecutor, as_completed
 urllib3.disable_warnings()
 session = requests.session()
 BASEURL = "https://www2.vavoo.to/ccapi/"
-
+try:from concurrent.futures import ThreadPoolExecutor, as_completed
+except:pass
 try: lines = json.loads(utils.addon.getSetting("favs"))
 except: lines=[]
 
