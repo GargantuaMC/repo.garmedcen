@@ -19,7 +19,8 @@ rm master.zip
 # Get platform_detect platform
 wget https://github.com/ElementumOrg/platform_detect/archive/master.zip && \
 unzip master.zip && \
-mv platform_detect-master resources/site-packages/platform_detect && \
+cp -rf platform_detect-master/python resources/site-packages/platform_detect && \
+cp -rf platform_detect-master/libraries resources/site-packages/platform_detect/ && \
 rm -rf platform_detect-master && \
 rm master.zip
 
