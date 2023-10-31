@@ -211,6 +211,32 @@
         <disclaimer />
         <platform>all</platform>
     </extension>
+</addon><addon id="script.cfgarmc.packages" name="Configurador GARGANTÚA-MC" version="23.00" provider-name="Gargantúa-MC">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0" />
+
+
+    </requires>
+    <extension point="xbmc.python.script" library="main.py">
+        <provides>executable</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en_GB">Configurador GARGANTÚA-MC</summary>
+        <description lang="en_GB" />
+        <language />
+        <platform>all</platform>
+        <license>unlicense</license>
+        <forum />
+        <website />
+        <email />
+        <source />
+        <news />
+        <disclaimer />
+        <assets>
+            <icon>resources/icon.png</icon>
+            <fanart>resources/fanart.jpg</fanart>
+        </assets>
+    </extension>
 </addon><addon id="script.elementum.burst" name="Elementum [COLOR FFFF6B00]Burst[/COLOR]" version="0.0.74" provider-name="elgatito">
     <requires>
         <import addon="xbmc.addon" version="16.0.0" />
