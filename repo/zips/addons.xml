@@ -1,5 +1,29 @@
 <?xml version='1.0' encoding='utf-8'?>
-<addons><addon id="plugin.video.duffyou" name="Duff You" version="0.2.1" provider-name="La Taberna">
+<addons><addon id="plugin.program.GMC_Nexus" name="[COLOR yellow]Instalar [COLOR gold]configurador de [COLOR aqua]GARGANTUA[COLOR yellow] MultiVerse[/COLOR]" version="1.0.0" provider-name="GARGANTUA Team">
+    <requires>
+		<import addon="script.speedtester" optional="true" version="1.1.2" />
+        <import addon="script.module.requests" optional="true" />
+        <import addon="script.module.six" optional="true" />
+        <import addon="script.kodi.android.update" optional="true" />     
+    </requires>
+    
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>executable</provides>
+    </extension>
+    <extension point="xbmc.service" library="startup.py" start="startup" />
+    
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en" />
+        <description lang="en" />
+        <platform>all</platform>
+        <reuselanguageinvoker>false</reuselanguageinvoker>
+        <source />
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+    </extension>
+</addon><addon id="plugin.video.duffyou" name="Duff You" version="0.2.1" provider-name="La Taberna">
     <requires>
         <import addon="script.module.six" version="1.11.0" />
         <import addon="script.module.simplecache" />
