@@ -297,32 +297,6 @@
             <fanart>resources/fanart.jpg</fanart>
         </assets>
     </extension>
-</addon><addon id="script.gmc.cfg" name="GMC Cfg" version="23.10.0" provider-name="Gargantúa-MC">
-    <requires>
-        <import addon="xbmc.python" version="3.0.0" />
-
-
-    </requires>
-    <extension point="xbmc.python.script" library="main.py">
-        <provides>executable</provides>
-    </extension>
-    <extension point="xbmc.addon.metadata">
-        <summary lang="en_GB">Configurador GARGANTÚA-MC</summary>
-        <description lang="en_GB" />
-        <language />
-        <platform>all</platform>
-        <license>unlicense</license>
-        <forum />
-        <website />
-        <email />
-        <source />
-        <news />
-        <disclaimer />
-        <assets>
-            <icon>resources/icon.png</icon>
-            <fanart>resources/fanart.jpg</fanart>
-        </assets>
-    </extension>
 </addon><addon id="script.kelebek" name="KELEBEK" version="3.6" provider-name="Iron Butterfly">
   <requires>
     <import addon="script.module.pyxbmct" version="1.1.4" />  
