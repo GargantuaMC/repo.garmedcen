@@ -211,24 +211,6 @@
         <disclaimer />
         <platform>all</platform>
     </extension>
-</addon><addon id="script.cfgarmc.packages" name="Configurador GARGANTÚA-MC" version="23.00" provider-name="Gargantúa-MC">
-    <requires>
-        <import addon="xbmc.python" version="3.0.0" />
-        <import addon="script.module.requests" />
-        <import addon="script.module.six" />
-        <import addon="script.kodi.android.update" optional="true" version="1.1.7" />
-        <import addon="script.speedtester" optional="true" version="1.1.2" />
-    </requires>
-    
-    <extension point="xbmc.python.pluginsource" library="default.py">
-        <provides>executable</provides>
-    </extension>
-    
-    <extension point="xbmc.addon.metadata">
-        <summary lang="en">[COLOR limegreen]Gargantúa MC[/COLOR]Configurador</summary>
-        <description lang="en">[COLOR limegreen]Gargantúa MC[/COLOR]Configurador: Configure todas las plataformas en un click.</description>
-        <platform>all</platform>
-    </extension>
 </addon><addon id="script.elementum.burst" name="Elementum [COLOR FFFF6B00]Burst[/COLOR]" version="0.0.74" provider-name="elgatito">
     <requires>
         <import addon="xbmc.addon" version="16.0.0" />
@@ -268,6 +250,32 @@
 </addon><addon id="script.get.packages" name="Configurador GARGANTÚA-MC" version="6.67" provider-name="Gargantúa-MC">
     <requires>
         <import addon="xbmc.python" version="2.25.0" />
+
+
+    </requires>
+    <extension point="xbmc.python.script" library="main.py">
+        <provides>executable</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en_GB">Configurador GARGANTÚA-MC</summary>
+        <description lang="en_GB" />
+        <language />
+        <platform>all</platform>
+        <license>unlicense</license>
+        <forum />
+        <website />
+        <email />
+        <source />
+        <news />
+        <disclaimer />
+        <assets>
+            <icon>resources/icon.png</icon>
+            <fanart>resources/fanart.jpg</fanart>
+        </assets>
+    </extension>
+</addon><addon id="script.gmc.cfg" name="GMC Cfg" version="23.10" provider-name="Gargantúa-MC">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0" />
 
 
     </requires>
