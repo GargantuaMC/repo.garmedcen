@@ -217,7 +217,7 @@ def freshStart():
 			addon.setSetting('firstrun', 'true')
 			addon.setSetting('buildname', 'No Build Installed')
 			addon.setSetting('buildversion', '0')
-			dialog.ok(addon_name, 'Terminamos. Fuerza Kodi para terminar..')
+			dialog.ok(addon_name, 'Terminamos. GARGANTUA se cerrara para terminar..')
 			os._exit(1)
 	else:
 		return
@@ -234,8 +234,8 @@ def buildInstall(NAME, NAME2, VERSION, URL):
 		length2 = int(int(length)/1000000)
 	else:
 		length2 = 'Unknown Size'
-	dp.create(NAME + ' - ' + str(length2) + ' MB', 'Descargando Wizard...')
-	dp.update(0, 'Descargando Wizard...')
+	dp.create(NAME + ' - ' + str(length2) + ' MB', 'Descargando configuracion...')
+	dp.update(0, 'Descargando configuracion...')
 	#
 	if length:
 		blocksize = max(int(length)/512, 1000000)
@@ -247,15 +247,15 @@ def buildInstall(NAME, NAME2, VERSION, URL):
 			size += len(buf)
 			size2 = int(size/1000000)
 			tempzip.write(buf)
-			dp.update(size2, 'Descargando Wizard...' + str(size2) + '/' + str(length2) + 'MB')
+			dp.update(size2, 'Descargando configuracion...' + str(size2) + '/' + str(length2) + 'MB')
 				
 	else:
-		dp.update(50, 'Descargando Wizard...')
+		dp.update(50, 'Descargando configuracion...')
 		tempzip.write(zipresp.read())
 	if length:
-		dp.update(100, 'Descargando Wizard...' + str(size2) + '/' + str(length2) + 'MB...Hecho!')
+		dp.update(100, 'Descargando configuracion...' + str(size2) + '/' + str(length2) + 'MB...Hecho!')
 	else:
-		dp.update(100, 'Descargando Wizard...Hecho!')
+		dp.update(100, 'Descargando configuracion...Hecho!')
 	xbmc.sleep(1000)      
 	tempzip.close()
 	dp.update(66, 'Extrayendo...')

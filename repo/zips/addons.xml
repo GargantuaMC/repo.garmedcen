@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<addons><addon id="plugin.program.gargantua.multiverse" name="Configurar GARGANTUA MultiVerse" version="1.0.o" provider-name="GARGANTUA Team">
+<addons><addon id="plugin.program.gargantua.multiverse" name="Configurar GARGANTUA MultiVerse" version="2.3.11" provider-name="GARGANTUA Team">
 	<requires>
 		<import addon="xbmc.python" version="3.0.0" />
 	</requires>
@@ -8,8 +8,8 @@
 	</extension>
 	<extension point="xbmc.service" library="service.py" />
 	<extension point="xbmc.addon.metadata">
-		<summary lang="en_GB">Kodi Wizard</summary>
-		<description lang="en_GB">Kodi 19 Wizard</description>
+		<summary lang="en_GB">Configurador GARGANTUA MultiVerse</summary>
+		<description lang="en_GB">Configurador GARGANTUA MultiVerse</description>
 		<disclaimer lang="en_GB" />
 		<language>en</language>
 		<platform>all</platform>
