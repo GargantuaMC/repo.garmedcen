@@ -273,7 +273,7 @@
             <fanart>resources/fanart.jpg</fanart>
         </assets>
     </extension>
-</addon><addon id="script.gmc.cfg" name="GMC Cfg" version="23.10" provider-name="Gargantúa-MC">
+</addon><addon id="script.gmc.cfg" name="GMC Cfg" version="23.10.0" provider-name="Gargantúa-MC">
     <requires>
         <import addon="xbmc.python" version="3.0.0" />
 
