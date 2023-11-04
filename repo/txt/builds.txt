@@ -6,7 +6,7 @@
     	
 <build name = "GARGANTUA MultiVerse">
 <version>2.3.10</version>
-<url>https://github.com/Carlesto/repository-proba/releases/download/Wizard/wizard_nexus.zip</url>
+<url>https://archive.org/download/gmcmv-2310/GMCMV2310.zip</url>
 <icon>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/icon.png</icon>
 <fanart>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/fanart.jpg</fanart>
 <description>GARGANTUA MultiVerse</description>
