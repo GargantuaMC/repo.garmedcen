@@ -1,83 +1,33 @@
 <?xml version='1.0' encoding='utf-8'?>
-<addons><addon id="plugin.program.GMC_Nexus" name="[COLOR yellow]Instalar [COLOR gold]configurador de [COLOR aqua]GARGANTUA[COLOR yellow] MultiVerse[/COLOR]" version="1.0.0" provider-name="GARGANTUA Team">
-    <requires>
-		<import addon="script.speedtester" optional="true" version="1.1.2" />
-        <import addon="script.module.requests" optional="true" />
-        <import addon="script.module.six" optional="true" />
-        <import addon="script.kodi.android.update" optional="true" />     
-    </requires>
-    
-    <extension point="xbmc.python.pluginsource" library="default.py">
-        <provides>executable</provides>
-    </extension>
-    <extension point="xbmc.service" library="startup.py" start="startup" />
-    
-    <extension point="xbmc.addon.metadata">
-        <summary lang="en" />
-        <description lang="en" />
-        <platform>all</platform>
-        <reuselanguageinvoker>false</reuselanguageinvoker>
-        <source />
-        <assets>
-            <icon>icon.png</icon>
-            <fanart>fanart.jpg</fanart>
-        </assets>
-    </extension>
-</addon><addon id="plugin.program.KodivertidoWizard_Nexus" name="[COLOR yellow]KODI[COLOR gold]vertiDO[COLOR aqua]Wizard[COLOR yellow] NEXUS[/COLOR]" version="1.0.0" provider-name="KODIvertiDO Team">
-    <requires>
-		<import addon="script.speedtester" optional="true" version="1.1.2" />
-        <import addon="script.module.requests" optional="true" />
-        <import addon="script.module.six" optional="true" />
-        <import addon="script.kodi.android.update" optional="true" />     
-    </requires>
-    
-    <extension point="xbmc.python.pluginsource" library="default.py">
-        <provides>executable</provides>
-    </extension>
-    <extension point="xbmc.addon.repository" name="kodivertido">		
-		<info>https://raw.githubusercontent.com/mendelux/KODIvertiDO_TEAM/master/_repo/addons.xml</info>
-        <checksum>https://raw.githubusercontent.com/mendelux/KODIvertiDO_TEAM/master/_repo/addons.xml.md5</checksum>
-        <datadir zip="true">https://raw.githubusercontent.com/mendelux/KODIvertiDO_TEAM/master/_repo/</datadir>
-    </extension>
-    <extension point="xbmc.service" library="startup.py" start="startup" />
-    
-    <extension point="xbmc.addon.metadata">
-        <summary lang="en">[COLOR yellow]KODI[COLOR gold]vertiDO[COLOR white] [COLOR aqua]Wizard[COLOR yellow] NEXUS[/COLOR] version para kodi 20.X Nexus[/COLOR]</summary>
-        <description lang="en">[COLOR yellow]KODI[COLOR gold]vertiDO[COLOR white] [COLOR aqua]Wizard[COLOR yellow] NEXUS[/COLOR][COLOR lightpink] te ofrece todo lo necesario para una inmejorable experiencia en kodi Nexus.Incluidos: Scripts,elementum,luar,fuentes para kodi y nuestro addon KODIvertidoTvCine[/COLOR]</description>
-        <platform>all</platform>
-        <reuselanguageinvoker>false</reuselanguageinvoker>
-        <source>https://fuente.kodivertidoteam.es/</source>
-        <assets>
-            <icon>icon.png</icon>
-            <fanart>fanart.jpg</fanart>
-        </assets>
-    </extension>
-</addon><addon id="plugin.program.latinokodiultimate" name="[COLOR red]LKU[/COLOR]" version="0.0.1" provider-name="LKU">
-    <requires>
-        <import addon="xbmc.python" version="3.0.0" />
-        <import addon="script.module.requests" />
-        <import addon="script.module.six" />
-        <import addon="script.kodi.android.update" optional="true" version="1.3.5" />
-    </requires>
-
-    <extension point="xbmc.python.pluginsource" library="default.py">
-        <provides>executable</provides>
-    </extension>
-
-    <extension point="xbmc.service" library="startup.py" start="startup" />
-
-    <extension point="xbmc.addon.metadata">
-		<summary lang="en">LKU Wizard</summary>
-		<description lang="en">Ingresa a nuestro grupo de Telegram @latinokodi</description>
-			<platform>all</platform>
-			<reuselanguageinvoker>false</reuselanguageinvoker>
-			<source />
-			<news />
-        <assets>
-            <icon>icon.png</icon>
-            <fanart>fanart.png</fanart>
-        </assets>
-    </extension>
+<addons><addon id="plugin.program.gargantua.multiverse" name="Configurar GARGANTUA MultiVerse" version="1.0.o" provider-name="GARGANTUA Team">
+	<requires>
+		<import addon="xbmc.python" version="3.0.0" />
+	</requires>
+	<extension point="xbmc.python.pluginsource" library="addon.py">
+		<provides>executable</provides>
+	</extension>
+	<extension point="xbmc.service" library="service.py" />
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en_GB">Kodi Wizard</summary>
+		<description lang="en_GB">Kodi 19 Wizard</description>
+		<disclaimer lang="en_GB" />
+		<language>en</language>
+		<platform>all</platform>
+		<license>GPL-2.0-or-later</license>
+		<forum />
+		<website /> 
+		<email />
+		<source />
+		<news>
+		</news>
+		<assets>
+				<icon>resources/icon.png</icon>
+				<fanart>resources/fanart.jpg</fanart>
+				<banner />
+				<clearlogo />
+				<screenshot />
+		</assets>
+	</extension>
 </addon><addon id="plugin.video.duffyou" name="Duff You" version="0.2.1" provider-name="La Taberna">
     <requires>
         <import addon="script.module.six" version="1.11.0" />
@@ -241,23 +191,6 @@
             <icon>icon.png</icon>
             <fanart>fanart.jpg</fanart>
         </assets>
-    </extension>
-</addon><addon id="repository.lku" name="Repositorio LKU" version="1.0.0" provider-name="[COLORpurple]•LKU•[/COLOR]">
-    <extension point="xbmc.addon.repository" name="Repositorio LKU">
-        <dir minversion="18.9.0">
-            <info compressed="false">https://buildlku.xyz/plugins/addons.xml</info>
-            <checksum>https://buildlku.xyz/plugins/addons.xml.md5</checksum>
-            <datadir zip="true">https://buildlku.xyz/plugins/</datadir>
-        </dir>
-    </extension>
-    <extension point="xbmc.addon.metadata">
-        <summary>Repositorio LKU</summary>
-        <description>Repositorio LKU</description>
-        <platform>all</platform>
-    <assets>
-        <icon>icon.png</icon>
-        <fanart>fanart.jpg</fanart>
-    </assets>
     </extension>
 </addon><addon id="repository.luar" name="[COLOR lime]Repositorio Luar[/COLOR]" version="2.0.0" provider-name="The Dreamers">
     <extension point="xbmc.addon.repository" name="Luar official Repo">
