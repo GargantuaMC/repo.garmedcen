@@ -7,7 +7,7 @@ from urllib.parse import parse_qs
 addon_id = xbmcaddon.Addon().getAddonInfo('id')
 
 '''#####-----Build File-----#####'''
-buildfile = 'https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/builds.txt'
+buildfile = 'https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/gmv23b.txt'
 
 '''#####-----Excludes-----#####'''
 EXCLUDES  = [addon_id, 'packages', 'Addons33.db', 'kodi.log']
