@@ -6,7 +6,7 @@
     	
 <build name = "GARGANTUA MultiVerse">
 <version>2.3.11</version>
-<url>https://archive.org/download/gmcmv-2311/GMCMV2311.zip</url>
+<url>https://archive.org/download/gmcmv-2311-f/GMCMV2311F.zip</url>
 <icon>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/icon.png</icon>
 <fanart>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/fanart.jpg</fanart>
 <description>GARGANTUA MultiVerse</description>
