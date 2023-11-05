@@ -31,7 +31,7 @@ except:
 	pass
 
 def MainMenu():
-	addDir('[COLOR gold]Configurar GARGANTUA MultiVerse [/COLOR]','',1,addon_icon,addon_fanart,local_string(30001),isFolder=True)
+	addDir('[COLOR gold]Descargar configuracion de GARGANTUA MultiVerse [/COLOR]','',1,addon_icon,addon_fanart,local_string(30001),isFolder=True)
 #	addDir('Mantenimiento','',5,addon_icon,addon_fanart,local_string(30002),isFolder=True)
 #	addDir('Borrar TODO','',4,addon_icon,addon_fanart,local_string(30003),isFolder=False)
 #	addDir('Notification','',100,addon_icon,addon_fanart,'Bring up the notifications dialog',isFolder=False)
@@ -270,7 +270,7 @@ def buildInstall(NAME, NAME2, VERSION, URL):
 	addon.setSetting('buildname', NAME2)
 	addon.setSetting('buildversion', VERSION)
 	addon.setSetting('firstrun', 'true')
-	dialog.ok(addon_name, 'Terminamos. Fuerza Kodi para terminar.')
+	dialog.ok(addon_name, 'Terminamos. Ahora GARGANTUA se cerrara.')
 	os._exit(1)
 
 def clear_packages():
