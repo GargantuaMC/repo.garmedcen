@@ -404,13 +404,6 @@ def update():
         except:
             pass
 
-def palantir():
-        xbmc.executebuiltin('RunAddon(plugin.video.palantir2)')
-        xbmc.executebuiltin("ActivateWindow(home)")
-        xbmc.executebuiltin("ReloadSkin()")
-
-
-
 def purgeCacheRom():
 
     tempPath = translatePath('special://home/addons/temp')
