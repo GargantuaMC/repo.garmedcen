@@ -17,21 +17,4 @@
             <fanart>fanart.jpg</fanart>
         </assets>
     </extension>
-</addon><addon id="script.limpiarGMC" name="Limpia Tu Gargantúa" version="2.3.1.1" provider-name="GMC Team">
-  <requires>
-    <import addon="script.module.six" version="1.11.0" />
-  </requires>
-     <extension point="xbmc.python.pluginsource" library="default.py">
-        <provides>executable</provides>
-    </extension> 
-  <extension point="xbmc.service" library="service.py" start="startup" />
-  <extension point="xbmc.addon.metadata">
-    <platform>all</platform>
-    <summary>Limpiar</summary>
-    <description>La herramienta para limpiar de una pasada su dispositivo.</description>
-    <assets>
-      <icon>icon.png</icon>
-      <fanart>fanart.jpg</fanart>
-    </assets>
-  </extension>
 </addon></addons>
