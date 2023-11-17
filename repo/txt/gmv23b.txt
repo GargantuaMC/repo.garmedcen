@@ -6,7 +6,7 @@
     	
 <build name = "1. ----- Configuración GENERALIZADA (++++ Recomendada ++++)">
 <version>2.3.1.1b</version>
-<url>https://archive.org/download/GarMedCenMv2311/GarMedCenMv2311.zip</url>
+<url>https://archive.org/download/GarMCme2311b/GarMCme2311b.zip</url>
 <icon>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/icon0.png</icon>
 <fanart>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/fanart0.jpg</fanart>
 <description>GARGANTUA en todo su explendor en su Edición MultiVerse. Primera versión de la edición con la versión 2.3.1.1</description>
