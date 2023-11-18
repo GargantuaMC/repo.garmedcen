@@ -19,5 +19,13 @@
 <fanart>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/fanart1.jpg</fanart>
 <description>GARGANTUA en todo su explendor en su Edición MultiVerse. Primera versión de la edición con la versión 2.3.1.1</description>
 </build>
+    	
+<build name = "3. ----- Configuración ++++ BetaTEST ++++ (===== No recomendada =====)">
+<version>2.3.1.1t</version>
+<url>https://archive.org/download/GarMCeMv2311es/GarMCeMv2311es.zip</url>
+<icon>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/icon2.png</icon>
+<fanart>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/fanart2.jpg</fanart>
+<description>GARGANTUA en todo su explendor en su Edición MultiVerse. Primera versión de la edición con la versión 2.3.1.1</description>
+</build>
 
 </builds>
