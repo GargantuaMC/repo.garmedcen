@@ -4,28 +4,12 @@
 <builds>
 
     	
-<build name = "1. ----- GENERALIZADA (++++ Recomendada ++++)">
-<version>2.3.1.1estandar</version>
+<build name = "GENERALIZADA">
+<version>2.3.1.1</version>
 <url>https://archive.org/download/GarMCeMv2311est/GarMCeMv2311est.zip</url>
 <icon>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/icon0.png</icon>
 <fanart>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/fanart0.jpg</fanart>
-<description>GARGANTUA en todo su explendor en su Edición MultiVerse. Primera versión de la edición con la versión 2.3.1.1</description>
-</build>
-    	
-<build name = "2. ===== EXTENDIDA (---- Mas iconos que otra cosa ----)">
-<version>2.3.1.1extendida</version>
-<url>https://archive.org/download/GarMedCenMv2311/GarMedCenMv2311.zip</url>
-<icon>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/icon1.png</icon>
-<fanart>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/fanart1.jpg</fanart>
-<description>GARGANTUA en todo su explendor en su Edición MultiVerse. Primera versión de la edición con la versión 2.3.1.1</description>
-</build>
-    	
-<build name = "3. +++++ BetaTEST (==== NO recomendada ====)">
-<version>2.3.1.1test</version>
-<url>https://archive.org/download/GarMCeMv2311es/GarMCeMv2311es.zip</url>
-<icon>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/icon2.png</icon>
-<fanart>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/fanart2.jpg</fanart>
-<description>GARGANTUA en todo su explendor en su Edición MultiVerse. Primera versión de la edición con la versión 2.3.1.1</description>
+<description>Configuración principal</description>
 </build>
 
 </builds>
