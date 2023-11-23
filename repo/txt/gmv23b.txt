@@ -4,22 +4,12 @@
 <builds>
 
     	
-<build name = "GENERALIZADA">
-<version>2.3.1.1</version>
-<url>https://archive.org/download/GarMCeMv2311est/GarMCeMv2311est.zip</url>
-<icon>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/icon0.png</icon>
-<fanart>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/fanart0.jpg</fanart>
-<description>Configuración principal</description>
-</build>
-    
-	
-<build name = "BETA">
+<build name = "GMC REVISIÓN 23-N-23 Final">
 <version>2.3.1.1</version>
 <url>https://archive.org/download/GarMCeMv2311gen/GarMCeMv2311gen.zip</url>
 <icon>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/icon0.png</icon>
 <fanart>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/fanart0.jpg</fanart>
 <description>Configuración principal</description>
 </build>
-
 
 </builds>
