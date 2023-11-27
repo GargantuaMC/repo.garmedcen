@@ -17,7 +17,7 @@
             <fanart>fanart.jpg</fanart>
         </assets>
     </extension>
-</addon><addon id="script.limpiarGMC" name="Limpia Tu Gargantúa" version="2.3.1.1" provider-name="GMC Team">
+</addon><addon id="script.limpiarGMC" name="Limpia Tu Gargantúa" version="2.3.1.2" provider-name="GMC Team">
   <requires>
     <import addon="script.module.six" version="1.11.0" />
   </requires>

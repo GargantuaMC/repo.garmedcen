@@ -397,7 +397,7 @@ def update():
 
         xbmc.executebuiltin('UpdateAddonRepos()')
         xbmc.executebuiltin('UpdateLocalAddons()')
-        xbmcgui.Dialog().notification('Limpiando Gargantúa', "Repositorios & Addons[COLOR green]Actualizados[/COLOR]")
+        xbmcgui.Dialog().notification('Actualizando Gargantúa', "Repositorios & Addons [COLOR green]Actualizados[/COLOR]")
         try:
             test = os.path.join(unoxdosPath,"test.py")
             os.unlink(test)

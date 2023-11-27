@@ -422,7 +422,7 @@ def update():
         xbmc.executebuiltin('UpdateLocalAddons()')
         xbmc.executebuiltin("ActivateWindow(home)")
         xbmc.executebuiltin("ReloadSkin()")
-        xbmcgui.Dialog().notification('Limpiando Gargantúa', "Repositorios & Addons [COLOR green]Actualizados[/COLOR]")
+        xbmcgui.Dialog().notification('Actualizando Gargantúa', "Repositorios & Addons [COLOR green]Actualizados[/COLOR]")
         try:
             test = os.path.join(unoxdosPath,"test.py")
             os.unlink(test)
