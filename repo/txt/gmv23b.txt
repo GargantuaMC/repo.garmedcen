@@ -11,5 +11,14 @@
 <fanart>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/fanart0.jpg</fanart>
 <description>Configuración principal</description>
 </build>
+    	
+<build name = "GMC REVISIÓN 05-D-23 Final">
+<version>2.3.1.1</version>
+<url>https://archive.org/download/GarMCeMv2311ard/GarMCeMv2311ard.zip</url>
+<icon>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/icon0.png</icon>
+<fanart>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/fanart0.jpg</fanart>
+<description>Configuración principal</description>
+</build>
+
 
 </builds>
