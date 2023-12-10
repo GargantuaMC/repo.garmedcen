@@ -4,20 +4,20 @@
 <builds>
 
     	
-<build name = "REVISIÓN INICIAL 2.3.1.1">
+<build name = "1.  REVISIÓN GENERAL 	(Habitual y generalizada)">
 <version>2.3.1.1</version>
-<url>https://archive.org/download/GarMCeMv2311gen/GarMCeMv2311gen.zip</url>
+<url>https://archive.org/download/GarMCeMv2311ndrdA32a/GarMCeMv2311ndrdA32a.zip</url>
 <icon>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/icon0.png</icon>
 <fanart>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/fanart0.jpg</fanart>
-<description>Configuración principal</description>
+<description>Configuración principal con todo lo importante. Algún apartado para adultos inevitable.</description>
 </build>
     	
-<build name = "REVISIÓN EXTENDÍDA 2.3.1.1 Final">
+<build name = "2.  REVISIÓN EXTENDIDA + XXX Adultos 	(Menos habitual)">
 <version>2.3.1.1</version>
-<url>https://archive.org/download/GarMCeMv2311ndrdA32/GarMCeMv2311ndrdA32.zip</url>
+<url>https://archive.org/download/GarMCeMv2311ndrdA32b/GarMCeMv2311ndrdA32b.zip</url>
 <icon>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/icon1.png</icon>
 <fanart>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/fanart1.jpg</fanart>
-<description>Configuración principal</description>
+<description>Configuración principal con algunos addon menos importantes y varios addon XXX adultos añadidos.</description>
 </build>
 
 
