@@ -121,6 +121,23 @@
       <fanart>fanart.jpg</fanart>
     </assets>
   </extension>
+</addon><addon id="script.module.backports.zoneinfo" name="zoneinfo" version="0.2.1" provider-name="pganssle">
+  <requires>
+    <import addon="xbmc.python" version="3.0.0" />
+    <import addon="script.module.tzdata" version="2021.5" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">A concrete time zone implementation to support the IANA time zone database</summary>
+    <description lang="en_GB">The zoneinfo module provides a concrete time zone implementation to support the IANA time zone database as originally specified in PEP 615.</description>
+    <platform>all</platform>
+    <license>Apache-2.0</license>
+    <website>https://pypi.org/project/backports.zoneinfo</website>
+    <source>https://github.com/pganssle/zoneinfo</source>
+    <assets>
+      <icon>resources/icon.png</icon>
+    </assets>
+  </extension>
 </addon><addon id="script.module.blinker" name="blinker" version="1.7.0" provider-name="Jason Kirtland">
   <requires>
     <import addon="xbmc.python" version="3.0.0" />
@@ -169,6 +186,27 @@
       <icon>resources/icon.png</icon>
     </assets>
   </extension>
+</addon><addon id="script.module.js2py" name="js2py" version="0.74" provider-name="Piotr Dabkowski">
+	<requires>
+		<import addon="script.module.tzlocal" version="1.2" />
+		<import addon="script.module.six" version="1.10" />
+		<import addon="script.module.pyjsparser" version="2.5.1" />
+	</requires>
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en_GB">JavaScript to Python Translator &amp; JavaScript interpreter written in 100% pure Python.</summary>
+		<description lang="en_GB">Packed for KODI from https://pypi.org/project/js2py/</description>
+		<platform>all</platform>
+		<language />
+		<license>MIT</license>
+		<forum />
+		<website />
+		<source>https://github.com/PiotrDabkowski/Js2Py</source>
+		<email />
+		<assets>
+			<icon>resources/icon.png</icon>
+		</assets>
+	</extension>
 </addon><addon id="script.module.oauthlib" name="oauthlib" version="3.2.2" provider-name="The OAuthlib Community">
   <requires>
     <import addon="xbmc.python" version="3.0.0" />
@@ -344,6 +382,40 @@ AMF3, the default serialization for ActionScript 3.0, provides various advantage
     <license>PSF-2.0</license>
     <website>https://typing-extensions.readthedocs.io/en/latest/</website>
     <source>https://github.com/python/typing_extensions</source>
+    <assets>
+      <icon>resources/icon.png</icon>
+    </assets>
+  </extension>
+</addon><addon id="script.module.tzdata" name="tzdata" version="2023.3.0+matrix.1" provider-name="Python Software Foundation">
+  <requires>
+    <import addon="xbmc.python" version="3.0.0" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">Provider of IANA time zone data</summary>
+    <description lang="en_GB">This is a Python package containing zic-compiled binaries for the IANA time zone database. It is intended to be a fallback for systems that do not have system time zone data installed</description>
+    <platform>all</platform>
+    <license>Apache-2.0</license>
+    <website>https://pypi.org/project/tzdata/</website>
+    <source>https://github.com/python/tzdata</source>
+    <assets>
+      <icon>resources/icon.png</icon>
+    </assets>
+  </extension>
+</addon><addon id="script.module.tzlocal" name="tzlocal" version="5.0.1" provider-name="Lennart Regebro">
+  <requires>
+    <import addon="xbmc.python" version="3.0.0" />
+    <import addon="script.module.tzdata" version="2023.3.0+matrix.1" />
+    <import addon="script.module.backports.zoneinfo" version="0.2.1" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">tzinfo object for the local timezone</summary>
+    <description lang="en_GB">tzinfo object for the local timezone</description>
+    <platform>all</platform>
+    <license>MIT</license>
+    <website>https://github.com/regebro/tzlocal</website>
+    <source>https://github.com/regebro/tzlocal</source>
     <assets>
       <icon>resources/icon.png</icon>
     </assets>
