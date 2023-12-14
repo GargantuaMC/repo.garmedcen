@@ -259,6 +259,23 @@ AMF3, the default serialization for ActionScript 3.0, provides various advantage
       <icon>icon.png</icon>
     </assets>
   </extension>
+</addon><addon id="script.module.pyjsparser" name="pyjsparser" version="2.7.1" provider-name="Piotr Dabkowski">
+	<requires />
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en_GB">Fast javascript parser (based on esprima.js)</summary>
+		<description lang="en_GB">Packed for KODI from https://pypi.org/project/pyjsparser/</description>
+		<platform>all</platform>
+		<language />
+		<license>MIT</license>
+		<forum />
+		<website />
+		<source>https://github.com/PiotrDabkowski/pyjsparser</source>
+		<email />
+		<assets>
+			<icon>resources/icon.png</icon>
+		</assets>
+	</extension>
 </addon><addon id="script.module.pyjwt" name="PyJWT" version="2.8.0" provider-name="Jose Padilla">
   <requires>
     <import addon="xbmc.python" version="3.0.0" />
@@ -434,16 +451,16 @@ AMF3, the default serialization for ActionScript 3.0, provides various advantage
       <icon>resources/icon.png</icon>
     </assets>
   </extension>
-</addon><addon id="script.module.tzlocal" name="tzlocal" version="3.0.0+matrix.2" provider-name="Lennart Regebro">
+</addon><addon id="script.module.tzlocal" name="tzlocal" version="5.0.1" provider-name="Lennart Regebro">
   <requires>
     <import addon="xbmc.python" version="3.0.0" />
-    <import addon="script.module.pytz" version="2019.3.0+matrix.1" />
+    <import addon="script.module.tzdata" version="2023.3.0+matrix.1" />
     <import addon="script.module.backports.zoneinfo" version="0.2.1" />
   </requires>
   <extension point="xbmc.python.module" library="lib" />
   <extension point="xbmc.addon.metadata">
-    <summary lang="en_GB">Python Module to find out the current time zone</summary>
-    <description lang="en_GB">Packed for Kodi from https://github.com/regebro/tzlocal, forked from https://github.com/jdollarKodi/script.module.tzlocal</description>
+    <summary lang="en_GB">tzinfo object for the local timezone</summary>
+    <description lang="en_GB">tzinfo object for the local timezone</description>
     <platform>all</platform>
     <license>MIT</license>
     <website>https://github.com/regebro/tzlocal</website>
