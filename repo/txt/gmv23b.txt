@@ -5,8 +5,8 @@
 
     	
 <build name = "1.  REVISIÓN GENERAL 	(Habitual y generalizada)">
-<version>2.3.1.1</version>
-<url>https://archive.org/download/GarMCeMv2311ndrdA32a/GarMCeMv2311ndrdA32a.zip</url>
+<version>2.3.1.2</version>
+<url>https://archive.org/download/GarMCeMv2312ndrdA32a/GarMCeMv2312ndrdA32a.zip</url>
 <icon>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/icon0.png</icon>
 <fanart>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/fanart0.jpg</fanart>
 <description>Configuración principal con todo lo importante. Algún apartado para adultos inevitable.</description>
