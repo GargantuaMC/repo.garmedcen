@@ -256,6 +256,24 @@
       <icon>resources/icon.png</icon>
     </assets>
   </extension>
+</addon><addon id="script.module.html5lib" name="html5lib-python" version="1.1.0+matrix.1" provider-name="html5lib">
+  <requires>
+    <import addon="xbmc.python" version="3.0.0" />
+    <import addon="script.module.six" version="1.14.0+matrix.1" optional="false" />
+    <import addon="script.module.webencodings" version="0.5.1+matrix.1" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">Standards-compliant library for parsing and serializing HTML documents and fragments in Python.</summary>
+    <description lang="en_GB">html5lib is a pure-python library for parsing HTML. It is designed to conform to the WHATWG HTML specification, as is implemented by all major web browsers.</description>
+    <platform>all</platform>
+    <license>MIT</license>
+    <source>https://github.com/html5lib/html5lib-python.git</source>
+    <website>https://github.com/html5lib/html5lib-python</website>
+    <assets>
+      <icon>icon.png</icon>
+    </assets>
+  </extension>
 </addon><addon id="script.module.js2py" name="js2py" version="0.74" provider-name="Piotr Dabkowski">
 	<requires>
 		<import addon="script.module.tzlocal" version="1.2" />
@@ -553,6 +571,22 @@ AMF3, the default serialization for ActionScript 3.0, provides various advantage
     <source>https://github.com/urllib3/urllib3</source>
     <assets>
       <icon>resources/icon.png</icon>
+    </assets>
+  </extension>
+</addon><addon id="script.module.webencodings" name="webencodings" version="0.5.1+matrix.2" provider-name="gsneller">
+  <requires>
+    <import addon="xbmc.python" version="3.0.0" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en_GB">This is a Python implementation of the WHATWG Encoding standard.</summary>
+    <description lang="en_GB">This module has encoding labels and BOM detection, but the actual implementation for encoders and decoders is Python’s.</description>
+    <platform>all</platform>
+    <license>BSD-1-Clause</license>
+    <source>https://github.com/gsnedders/python-webencodings</source>
+    <website>https://pythonhosted.org/webencodings/</website>
+    <assets>
+      <icon>icon.png</icon>
     </assets>
   </extension>
 </addon><addon id="script.module.websocket" name="websocket-client" version="1.6.4" provider-name="liris">
