@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.program.CerrarGMC" name="Forzar el cierre de [COLOR aqua]GARGANTÚA[/COLOR] " version="2.3.1.0" provider-name="Team GMC">
+  <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Cerrar GARGANTÚA</summary>
+    <description lang="en">Forzar el cierre de GARGANTÚA</description>
+	<assets>
+		<icon>icon.png</icon>
+		<fanart>fanart.jpg</fanart>
+	</assets>
+    <platform>all</platform>
+  </extension>
+</addon>
