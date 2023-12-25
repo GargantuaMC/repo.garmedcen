@@ -22,7 +22,7 @@ theme="http://"
 icon="https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/icon1.png"
 fanart="https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/fanart1.jpg"
 preview="http://"
-adult="yes"
+adult="no"
 info="http://"
 description="REVISIÓN EXTENDIDA + XXX Adultos. Menos habitual. Configuración principal con algunos addon menos importantes y varios addon XXX adultos añadidos."
 
