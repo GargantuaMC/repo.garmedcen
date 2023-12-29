@@ -1,8 +1,8 @@
 <builds>  
 
   <build>
-	<name>1.  REVISIÓN GENERAL 	(Habitual y generalizada)</name>
-	<version>2.3.1.2</version>
+	<name>1. ENDOR</name>
+	<version>2.3.1.1</version>
 	<url>https://archive.org/download/GarMCeMv2312A32a/GarMCeMv2312A32a.zip</url>
 	<icon>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/icon0.png</icon>
 	<fanart>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/fanart0.jpg</fanart>
@@ -10,8 +10,8 @@
   </build>
 
   <build>
-	<name>2.  REVISIÓN EXTENDIDA + XXX Adultos 	(Menos habitual)</name>
-	<version>2.3.1.2</version>
+	<name>2. ENDOR EXPERIMENTOS	(NO RECOMENDADA)</name>
+	<version>2.3.1.0</version>
 	<url>https://archive.org/download/GarMCeMv2312A32b/GarMCeMv2312A32b.zip</url>
 	<icon>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/icon1.png</icon>
 	<fanart>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/fanart1.jpg</fanart>
