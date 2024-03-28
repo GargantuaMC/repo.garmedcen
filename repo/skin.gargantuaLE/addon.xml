@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<addon id="skin.gargantuaLE" version="6.7.2023" name="GargantuaSKIN LibreElec" provider-name="GargantuaTeam, Confluence Mod">
+<addon id="skin.gargantuaLE" version="6.7.2024" name="GargantuaSKIN LibreElec" provider-name="GargantuaTeam, Confluence Mod">
 	<requires>
 		<import addon="xbmc.gui" version="5.15.0"/>
 	</requires>
