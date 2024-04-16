@@ -5,8 +5,8 @@
 
     	
 <build name = "ENDOR (NORMAL)">
-<version>2.3.24.001</version>
-<url>https://archive.org/download/GarMCeMv2324001A32/GarMCeMv2324001A32.zip</url>
+<version>2.3.24.002</version>
+<url>https://archive.org/download/GarMCeMv2324002A32/GarMCeMv2324002A32.zip</url>
 <icon>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/icon0.png</icon>
 <fanart>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/fanart0.jpg</fanart>
 <description>Ultima configuración equivalente a la proxima (MOON OF ENDOR - v2.4.X.X).</description>
