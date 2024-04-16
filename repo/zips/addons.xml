@@ -64,6 +64,29 @@
       <fanart>fanart.jpg</fanart>
     </assets>
   </extension>
+</addon><addon id="repository.jacktook" name="Jacktook Add-on Repository" provider-name="Sam-Max" version="0.0.4">
+    <requires>
+        
+    </requires>
+    <extension point="xbmc.addon.repository">
+        <dir>
+            <info>http://127.0.0.1:64236/addons.xml</info>
+            <checksum>http://127.0.0.1:64236/addons.xml.md5</checksum>
+            <datadir>http://127.0.0.1:64236/</datadir>
+        </dir>
+    </extension>
+    <extension point="xbmc.python.script" library="default.py" />
+    <extension point="xbmc.service" library="service.py" />
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <license>See https://github.com/Sam-Max/repository.jacktook/blob/master/LICENSE</license>
+        <source>https://github.com/Sam-Max/repository.jacktook</source>
+        <summary lang="en">Jacktook Repository</summary>
+        <description lang="en">Jacktook Repository for Jacktook Addon.</description>
+        <assets>
+            <icon>icon.png</icon>
+        </assets>
+    </extension>
 </addon><addon id="repository.redwizard" name="[COLOR red]The Red Repo[/COLOR]" version="1.0.5" provider-name="[COLOR red]The Red Wizard[/COLOR]">
     <extension point="xbmc.addon.repository" name="The Red Repo">
         <dir>
