@@ -12,6 +12,24 @@
 	</assets>
     <platform>all</platform>
   </extension>
+</addon><addon id="plugin.video.doqmental" name="DOQMENTAL" version="1.2" provider-name="LASER">
+  <requires>
+    <import addon="script.module.six" />
+    <import addon="plugin.video.youtube" version="5.0.0" />
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="es">DOQMENTAL</summary>
+    <description lang="es">Los Mejores Documentales en Castellano</description>
+    <platform>all</platform>
+    <license>GPL v2.0</license>
+    <assets>
+        <icon>icon.png</icon>
+        <fanart>fanart.jpg</fanart>
+    </assets>
+    </extension>
 </addon><addon id="repo.garmedcen" name="Gargantua Repo" version="1.0a" provider-name="GMC">
     <extension point="xbmc.addon.repository" name="Example Repository">
         <dir>
