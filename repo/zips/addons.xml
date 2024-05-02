@@ -167,6 +167,28 @@
             <fanart>fanart.jpg</fanart>
         </assets>
     </extension>
+</addon><addon id="repository.theblackghost" name="The Black Ghost Repo" version="0.0.2" provider-name="BlackGhost">
+    <extension point="xbmc.addon.repository" name="theblackghost">
+		<dir>
+			<info>https://raw.githubusercontent.com/blackghostaddon/repo/master/addons.xml</info>
+			<checksum>https://raw.githubusercontent.com/blackghostaddon/repo/master/addons.xml.md5</checksum>
+			<datadir zip="true">https://raw.githubusercontent.com/blackghostaddon/repo/master/</datadir>
+		 </dir>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+        <summary>Black all Black Ghost</summary>
+		<description lang="en_GB">Black Ghost REPO</description>
+		<description lang="es_ES">Black Ghost Repositorio</description>
+        <license />
+		<language />
+		<website />
+		<news />
+		<assets>
+			<icon>icon.png</icon>
+			<fanart>fanart.jpg</fanart>
+		</assets> 
+    </extension>
 </addon><addon id="repository.thecrew" name="[COLOR orchid]THE CREW REPO[/COLOR]" provider-name="The Crew" version="0.3.6">
 	<extension point="xbmc.addon.repository" name="The Crew">
 			<dir minversion="16.0.0" maxversion="18.9.9">
