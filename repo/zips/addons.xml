@@ -78,6 +78,24 @@
             <fanart>fanart.jpg</fanart>    
     </assets>
     </extension>
+</addon><addon id="repository.arias800" name="Arias800's Repository" version="0.1" provider-name="Arias800">
+    <extension point="xbmc.addon.repository" name="Arias800's Repository">
+        <dir>
+            <info compressed="false">https://raw.githubusercontent.com/Arias800/repository.arias800/master/repo/zips/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/Arias800/repository.arias800/master/repo/zips/addons.xml.md5</checksum>
+            <datadir zip="true">https://raw.githubusercontent.com/Arias800/repository.arias800/master/repo/zips/</datadir>
+        </dir>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Arias800's Repository</summary>
+        <description>DESCRIPTION OF YOUR REPO HERE</description>
+        <disclaimer />
+        <platform>all</platform>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
+    </extension>
 </addon><addon id="repository.arrownegra" name="[COLOR red]Arrow[/COLOR] [COLOR black]Negra[/COLOR] [COLORcyan]Repository[/COLOR]" version="2.20" provider-name="Flecha Negra">
   <requires>
     <import addon="xbmc.addon" version="12.0.0" />  
@@ -338,6 +356,23 @@
       <icon>icon.png</icon>
       <fanart>fanart.jpg</fanart>
     </assets>
+  </extension>
+</addon><addon id="script.module.dnspython" name="DNS Python" version="1.12.1" provider-name="dnspython">
+  <requires>
+    <import addon="xbmc.python" version="3.0.0" />
+  </requires>
+  <extension point="xbmc.python.module" library="lib" />
+  <extension point="xbmc.addon.metadata">
+	<summary>A Pure Python DNS module</summary>
+	<description>A Pure Python DNS module</description>
+	<disclaimer lang="en" />
+	<language>en</language>
+    <platform>all</platform>
+	<license>BSD-style license</license>
+	<forum />
+	<website>http://www.dnspython.org/</website>
+	<email />
+	<source>https://github.com/Arias800/script.module.dnspython/</source>
   </extension>
 </addon><addon id="script.otaku.mappings" version="24.05.02" name="Otaku Mappings" provider-name="TeamOtaku">
     <extension point="xbmc.python.module" library="lib" />
