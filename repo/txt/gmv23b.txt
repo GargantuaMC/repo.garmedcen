@@ -4,12 +4,20 @@
 <builds>
 
     	
-<build name = "MOON OF ENDOR">
-<version>2.4.1.0 (2.3.1.1 Finál)</version>
-<url>https://s2download.krakenfiles.com/force-download/MGEwMDY1YTZkMGM4YTcxZmd1LdMrvRExi2GgOR5MW1J2XSjBRfi6_nZD6bpVi-Js/9Ynb4xmz8o</url>
+<build name = "MOON OF ENDOR +Servidor1+">
+<version>2.4.1.001</version>
+<url>https://store5.gofile.io/download/web/ddc7254c-449a-47df-ba49-39d4cccc56db/202410092246.zip</url>
 <icon>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/icon1.png</icon>
 <fanart>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/fanart0.jpg</fanart>
-<description>Él MultiVerso se expande.....</description>
+<description>Él MultiVerso se expande.....  (2.3.1.1 Finál)</description>
+</build>
+    	
+<build name = "MOON OF ENDOR +Servidor+">
+<version>2.4.1.002</version>
+<url>https://archive.org/download/GarMCeMv2312A32a/GarMCeMv2312A32a.zip</url>
+<icon>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/icon1.png</icon>
+<fanart>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/fanart0.jpg</fanart>
+<description>Él MultiVerso se expande.....  (2.3.1.1 Finál)</description>
 </build>
 
 
