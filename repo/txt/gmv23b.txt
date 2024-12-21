@@ -4,12 +4,12 @@
 <builds>
 
     	
-<build name = "MOON OF ENDOR">
-<version>2.4.1.1</version>
-<url>https://archive.org/download/GMC-2411/GMC2411.zip</url>
+<build name = "BATTLE OF ENDOR">
+<version>2.4.1.2</version>
+<url>https://archive.org/download/GMC-2412/GMC2412.zip</url>
 <icon>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/icon1.png</icon>
 <fanart>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/fanart0.jpg</fanart>
-<description>Él MultiVerso se expande.....  (2.3.1.1 Finál)</description>
+<description>Él MultiVerso se expande.....  (2.3.1.1 Final Revisada, NO SE EXTENDERA MAS versiones.)</description>
 </build>
 
 
