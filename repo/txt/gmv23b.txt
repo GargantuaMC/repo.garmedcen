@@ -5,8 +5,8 @@
 
     	
 <build name = "BATTLE OF ENDOR">
-<version>2.5.0.6</version>
-<url>https://archive.org/download/GMC-MV-2506/GMCMV2506ER.zip</url>
+<version>2.5.0.9</version>
+<url>https://archive.org/download/GMC-MV-2509/GMCMV2509.zip</url>
 <icon>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/icon1.png</icon>
 <fanart>https://raw.githubusercontent.com/GargantuaMC/repo.garmedcen/master/repo/txt/fanart0.jpg</fanart>
 <description>Él MultiVerso se expande.....  (2.3.1.1 Final Revisada Extrema, NO SE EXTENDERA MAS versiones.)</description>
