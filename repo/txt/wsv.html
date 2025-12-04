@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Copiar URL al Portapapeles</title>
+</head>
+<body>
+<p> </p>
+<p>------------------------------</p>
+<p>URL de la actualización:</p>
+<p>------------------------------</p>
+<p> </p>
+<p> </p>
+<p>====================================================================================</p>
+<p></p>
+<p id="textoACopiar">https://www.mediafire.com/file/xmfa8kud4079ue8/Windscribed+VPN+Mod+By+iking+03+12+2025.apk/file</p>
+<p> </p>
+<p> </p>
+<button onclick="copiarTexto()">Copiar URL</button>
+
+<script>
+async function copiarTexto() {
+  const texto = document.getElementById("textoACopiar").innerText;
+  try {
+    await navigator.clipboard.writeText(texto);
+    alert("URL copiada al portapapeles: " + texto);
+  } catch (err) {
+    console.error('Error al copiar URL: ', err);
+    alert("No se pudo copiar el URL.");
+  }
+}
+</script>
+<p> </p>
+<p>====================================================================================</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Acceda a la URL copiada pengandola en su navegador de internet y descarguela en su dispositivo.</p>
+<p> </p>
+<p>Despues ejecute la version descargada e instalela.</p>
+<p>PD: Puede que tenga que borrar la versión instalada previamente para poder instalar la nueva en caso de error..</p>
+</body>
+</html>
